@@ -8,6 +8,8 @@ import Footer from "./components/Footer/Footer"
 import Navbar from "./components/Navbar/Navbar"
 import SlideNavbar from "./components/Navbar/SlideNavbar"
 import TopNav from "./components/Navbar/TopNav"
+import SellOfTheWeek from "./components/SellOfTheWeek/SellOfTheWeek"
+import TopSelling from "./components/TopSelling/TopSelling"
 import WhyChooseUS from "./components/WhyChooseUs/WhyChooseUs"
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
       <WhyChooseUS />
       <Slider />
       <FirstShop />
+      <TopSelling />
       <AppAdd />
+      <SellOfTheWeek />
       <Footer />
     </div>
   )
