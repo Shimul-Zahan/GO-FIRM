@@ -4,7 +4,7 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 
 const TopNav = () => {
     return (
-        <div className='bg-[#0d1b1a] px-10 py-3 flex justify-between items-center text-white'>
+        <div className='bg-[#0d1b1a] lg:px-10 px-3 gap-1 py-3 flex flex-col lg:flex-row justify-between items-start lg:items-center text-white'>
             <div className="flex justify-center items-center gap-2">
                 <IoMailUnreadOutline className="text-orange-500" />
                 <h1>info.freshcart.org@hosmail.com</h1>

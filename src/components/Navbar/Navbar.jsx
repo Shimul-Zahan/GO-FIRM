@@ -62,7 +62,7 @@ const Navbar = () => {
               <FaBarsStaggered className='text-2xl text-white' />
             </div>
             <img src={logo} className='h-10' />
-            <h1 className='text-4xl font-medium text-white'>FreshCart</h1>
+            <h1 className='text-4xl font-medium text-white'>GOFIRM</h1>
           </div>
           <div className='flex justify-center items-center gap-5 text-white'>
             {

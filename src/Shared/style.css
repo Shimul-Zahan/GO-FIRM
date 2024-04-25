@@ -1,0 +1,66 @@
+/*
+  All of the CSS below is strictly for the demo.  none of the components rely on this for actual
+  functionality.
+*/
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed var(--highlight1);
+    background: var(--highlight2);
+    margin: 2rem 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-size: 0.5rem;
+    line-height: 1.5em;
+}
+
+
+
+.responsiveImg {
+    max-width: 100%;
+}
+
+.slide-text {
+    position: absolute;
+    left: 90px;
+    /* Adjust left positioning as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    /* Adjust text color as needed */
+}
+
+
+
+
+.slider {
+    max-width: 100%;
+}
+
+/* Media Queries for Responsive Design */
+@media only screen and (min-width: 8px) {
+
+    /* Adjustments for tablets and larger devices */
+    .slide-text {
+        width: 55%;
+        left: 5%;
+        /* Adjust left positioning for larger screens */
+    }
+}
