@@ -10,6 +10,11 @@ import HomeProfile from '../../components/Profile/Home/Home'
 import ShopPage from '../../components/Products/Product/Product'
 import ShopCategory from '../../components/ShopCategory/ShopCategory'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
+import CartItem from '../../components/Cart/cart'
+import CouponCard from '../../components/Coupons/Coupons'
+import Contact from '../../components/Contact/Contact'
+import BillingDetails from '../../components/BillingDetails/BillingDetails'
+import TrackOrder from '../../components/TrackOrder/TrackOrder'
 
 
 const router = createBrowserRouter([
@@ -53,6 +58,26 @@ const router = createBrowserRouter([
             {
                 path: '/prod-details',
                 element: <ProductDetails />,
+            },
+            {
+                path: '/cart',
+                element: <CartItem />,
+            },
+            {
+                path: '/coupons',
+                element: <CouponCard />,
+            },
+            {
+                path: '/contact',
+                element: <Contact />,
+            },
+            {
+                path: '/checkout',
+                element: <BillingDetails />,
+            },
+            {
+                path: '/order',
+                element: <TrackOrder />,
             },
         ]
     }

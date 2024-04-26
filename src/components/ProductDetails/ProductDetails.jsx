@@ -2,6 +2,7 @@ import React from 'react'
 import icon from '../../assets/details/Screenshot 2024-04-26 033159.png'
 import payment from '../../assets/details/Screenshot 2024-04-26 033351.png'
 import Navbar from '../Navbar/Navbar'
+import Reviews from '../../Shared/Reviews'
 
 const ProductDetails = () => {
     return (
@@ -92,7 +93,9 @@ const ProductDetails = () => {
                         </div>
                     </dl>
                 </div>
-
+                <div className='py-10'>
+                    <Reviews />
+                </div>
             </div>
         </>
     )
