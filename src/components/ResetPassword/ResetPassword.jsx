@@ -1,10 +1,7 @@
-import React from 'react';
 import bgImage from '../../assets/login/login-bg.png';
-import gl from '../../assets/login/google.png';
-import fb from '../../assets/login/fb.png';
 import Navbar from '../Navbar/Navbar';
 
-const Login = () => {
+const ResetPassword = () => {
     return (
         <>
             <Navbar />
@@ -26,36 +23,22 @@ const Login = () => {
                             <ul className='flex justify-center items-center gap-2 pb-10'>
                                 <li>Home</li>
                                 <li></li>
-                                <li>Register Now</li>
+                                <li>Login Now</li>
                             </ul>
                         </div>
-                        <div className='flex justify-center items-center gap-2 pb-8'>
-                            <div className='border border-black w-full flex justify-center items-center gap-41 cursor-pointer'>
-                                <img src={gl} alt="" className='h-12 w-12' />
-                                <h1>Login With Google</h1>
-                            </div>
-                            <div className='border border-black w-full flex justify-center items-center gap-1 cursor-pointer'>
-                                <img src={fb} alt="" className='h-12 w-12' />
-                                <h1>Login With Facebook</h1>
-                            </div>
+
+                        <div className='pb-10'>
+                            <h1 className='text-3xl font-bold text-center my-2'>Reset Password</h1>
+                            <p className='text-base text-center'>Enter your email address to request password reset.</p>
                         </div>
-                        <span className="flex items-center pb-8">
-                            <span className="h-px flex-1 bg-black"></span>
-                            <span className="shrink-0 px-4">or Sign in with Email</span>
-                            <span className="h-px flex-1 bg-black"></span>
-                        </span>
 
                         <div className='space-y-8'>
                             <div className='relative'>
                                 <input type="text" placeholder='shimul@gmail.com ' className='border border-black py-3 px-5 w-full' />
                                 <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Your Email</h1>
                             </div>
-                            <div className='relative'>
-                                <input type="text" placeholder='********' className='border border-black py-3 px-5 w-full' />
-                                <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Your Password</h1>
-                            </div>
                             <button type='submit' className='border-2 bg-black text-white border-black py-3 px-5 w-full'>
-                                Login
+                                Send Mail
                             </button>
                         </div>
                     </form>
@@ -65,4 +48,6 @@ const Login = () => {
     );
 };
 
-export default Login;
+
+
+export default ResetPassword

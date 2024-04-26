@@ -2,7 +2,7 @@ import logo from '../../assets/logo/logo.png'
 import { FaBarsStaggered } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import SearchNav from './SearchNav';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -13,12 +13,11 @@ const Navbar = () => {
     },
     {
       menu: 'Shops',
-      link: '/shops',
       extra: true,
       extranMenu: [
         { menu: 'Shop', link: '/shop' },
         { menu: 'Shop Details', link: '/shop-details' },
-        { menu: 'Shop Category', link: '/shop-category' },
+        { menu: 'Shop Category', link: '/shop-cat' },
         { menu: 'Cart', link: '/cart' },
         { menu: 'Wishlist', link: '/wishlist' },
         { menu: 'Compare', link: '/compare' }
@@ -26,17 +25,16 @@ const Navbar = () => {
     },
     {
       menu: 'Pages',
-      link: '/pages',
       extra: true,
       extranMenu: [
         { menu: 'About', link: '/about' },
         { menu: 'Login', link: '/login' },
-        { menu: 'Register', link: '/shop-category' },
-        { menu: 'Forgot', link: '/cart' },
-        { menu: 'Profile', link: '/wishlist' },
-        { menu: 'Invoice', link: '/compare' },
-        { menu: 'Order', link: '/compare' },
-        { menu: 'Checkout', link: '/compare' }
+        { menu: 'Register', link: '/reg' },
+        { menu: 'Forgot', link: '/reset-pass' },
+        { menu: 'Profile', link: '/profile' },
+        { menu: 'Invoice', link: '/invoice' },
+        { menu: 'Order', link: '/order' },
+        { menu: 'Checkout', link: '/checkout' }
       ]
     },
     {
@@ -70,9 +68,9 @@ const Navbar = () => {
                 menus.map((menu, index) =>
                   <div key={index}>
                     <div className='group duration-500 relative'>
-                      <li key={index} className='flex justify-center items-center'>
+                      <Link to={menu?.link} key={index} className='flex justify-center items-center'>
                         {menu?.menu} {menu?.extra && <RiArrowDropDownLine className='text-lg' />}
-                      </li>
+                      </Link>
 
                       {
                         menu?.extra && <div>
@@ -81,7 +79,9 @@ const Navbar = () => {
                               <div className='px-5 space-y-2 py-2 bg-white shadow text-black z-50 w-[170px]'>
                                 {
                                   menu?.extranMenu.map((subMenuItem, index) =>
-                                    <li key={index} className='capitalize cursor-pointer hover:text-[#678e61] list-none'>{subMenuItem?.menu}</li>
+                                    <Link to={subMenuItem?.link} key={index}
+                                      className='flex capitalize cursor-pointer hover:text-[#678e61] list-none'>
+                                      {subMenuItem?.menu}</Link>
                                   )
                                 }
                               </div>
