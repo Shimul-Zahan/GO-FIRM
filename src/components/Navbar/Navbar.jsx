@@ -52,7 +52,7 @@ const Navbar = () => {
   ]
 
   return (
-    <div className='bg-[#23403d] px-10 py-5 sticky top-0 z-50 duration-300 shadow'>
+    <div className='bg-[#23403d] px-10 py-8 sticky top-0 z-50 duration-300 shadow'>
       <div className='flex justify-between items-center gap-20'>
         <div className='flex justify-start items-center gap-20'>
           <div className='flex justify-normal items-center gap-2'>

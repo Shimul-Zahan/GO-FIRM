@@ -15,6 +15,8 @@ import CouponCard from '../../components/Coupons/Coupons'
 import Contact from '../../components/Contact/Contact'
 import BillingDetails from '../../components/BillingDetails/BillingDetails'
 import TrackOrder from '../../components/TrackOrder/TrackOrder'
+import Whitelist from '../../components/WhiteList/Whitelist'
+import Compare from '../../components/Compare/Compare'
 
 
 const router = createBrowserRouter([
@@ -78,6 +80,14 @@ const router = createBrowserRouter([
             {
                 path: '/order',
                 element: <TrackOrder />,
+            },
+            {
+                path: '/wishlist',
+                element: <Whitelist />,
+            },
+            {
+                path: '/compare',
+                element: <Compare />,
             },
         ]
     }
