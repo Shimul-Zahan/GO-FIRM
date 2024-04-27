@@ -17,6 +17,8 @@ import BillingDetails from '../../components/BillingDetails/BillingDetails'
 import TrackOrder from '../../components/TrackOrder/TrackOrder'
 import Whitelist from '../../components/WhiteList/Whitelist'
 import Compare from '../../components/Compare/Compare'
+import Sidebard from '../../Dashboard/Sidebard'
+import { Dashboard } from '../../Dashboard/Dashboard'
 
 
 const router = createBrowserRouter([
@@ -93,6 +95,16 @@ const router = createBrowserRouter([
                 path: '/compare',
                 element: <Compare />,
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <Sidebard />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard />
+            }
         ]
     }
 ])
