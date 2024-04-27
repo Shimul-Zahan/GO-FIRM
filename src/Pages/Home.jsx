@@ -9,6 +9,8 @@ import FirstShop from '../components/FirstShop/FirstShop'
 import Slider from '../Shared/Slider'
 import WhyChooseUS from '../components/WhyChooseUs/WhyChooseUs'
 import BannerSlider from '../Shared/BannerSlider'
+import CustomerReview from '../components/CustomerReview/CustomerReview'
+import BestDeal from '../components/BestDeal/BestDeal'
 
 const Home = () => {
     return (
@@ -16,22 +18,15 @@ const Home = () => {
             <SlideNavbar />
             <TopNav />
             <Navbar />
-            {/* <Banner /> */}
             <BannerSlider />
             <WhyChooseUS />
-            {/* <ResetPassword /> */}
             <Slider />
             <FirstShop />
+            <BestDeal />
             <TopSelling />
             <AppAdd />
             <SellOfTheWeek />
-            {/* <SignUP />
-            <Footer />
-            <Login /> */}
-            {/* <Home /> */}
-            {/* <ShopPage /> */}
-            {/* <ProductDetails /> */}
-            {/* <ShopCategory /> */}
+            <CustomerReview />
         </div>
     )
 }

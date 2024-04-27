@@ -3,6 +3,7 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import SearchNav from './SearchNav';
 import { Link } from 'react-router-dom'
+import './style.css'
 
 const Navbar = () => {
 
@@ -66,7 +67,7 @@ const Navbar = () => {
             {
               menus && (
                 menus.map((menu, index) =>
-                  <div key={index}>
+                  <div key={index} className='nav-item'>
                     <div className='group duration-500 relative'>
                       <Link to={menu?.link} key={index} className='flex justify-center items-center'>
                         {menu?.menu} {menu?.extra && <RiArrowDropDownLine className='text-lg' />}
@@ -75,8 +76,8 @@ const Navbar = () => {
                       {
                         menu?.extra && <div>
                           <div>
-                            <div className='absolute hidden pt-7 duration-500 delay-200 group-hover:md:block hover:md:block'>
-                              <div className='px-5 space-y-2 py-2 bg-white shadow text-black z-50 w-[170px]'>
+                            <div className='absolute -top-[500px] -z-10 pt-7 duration-500 delay-200 group-hover:duration-500 group-hover:md:top-10 group-hover:z-50 hover:md:block'>
+                              <div className='px-5 space-y-2 py-2 bg-white shadow text-black w-[170px]'>
                                 {
                                   menu?.extranMenu.map((subMenuItem, index) =>
                                     <Link to={subMenuItem?.link} key={index}

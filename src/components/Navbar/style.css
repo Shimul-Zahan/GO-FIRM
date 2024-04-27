@@ -1,0 +1,24 @@
+.nav-item {
+    position: relative;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease, bottom 0.3s ease;
+}
+
+.nav-item:hover::after {
+    opacity: 1;
+    bottom: -10px;
+    width: 5px;
+    height: 5px;
+}

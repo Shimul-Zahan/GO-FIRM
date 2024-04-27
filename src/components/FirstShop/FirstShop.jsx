@@ -17,7 +17,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -63,7 +63,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -109,7 +109,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -155,7 +155,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -201,7 +201,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -247,7 +247,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -293,7 +293,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>
@@ -339,7 +339,7 @@ const FirstShop = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
 
-                        <div className='text-4xl ml-5 w-full space-y-8 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
+                        <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
                             <div className='relative w-[70%] cursor-pointer showMenu'>
                                 <CiShoppingCart className='bg-white font-thin p-1 rounded-full hover:bg-[#678E61]' />
                                 <div className='menuItem hidden text-sm px-1 rounded-sm text-white absolute bg-black left-12 top-1/2 translate-y-[-50%]'>

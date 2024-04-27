@@ -4,7 +4,7 @@ import { RiErrorWarningLine } from 'react-icons/ri'
 const Coupon = () => {
   return (
       <div className="flex justify-start items-center">
-          <div className='flex justify-start items-center gap-10 border p-4 h-44 border-black border-r-0 border-dashed'>
+          <div className='flex justify-start items-center gap-10 border p-4 h-44 border-gray-300 border-r-0 border-dashed'>
               <div>
                   <img src="https://shofi-grocery.vercel.app/images/product/product-1.jpg" alt="" className='h-36 w-36 rounded-sm' />
               </div>
@@ -41,7 +41,7 @@ const Coupon = () => {
                   </div>
               </div>
           </div>
-          <div className='border-t border-b border-r border-black border-dashed h-44 w-52 flex flex-col justify-center items-start'>
+          <div className='border-t border-l border-b border-r border-gray-300 border-dashed h-44 w-52 flex flex-col justify-center items-start'>
               <div className='flex flex-col justify-center items-start gap-1 p-4'>
                   <div className='flex gap-1 items-center'>
                       <h1>Coupone <span className='text-green-400'>Active</span></h1>
