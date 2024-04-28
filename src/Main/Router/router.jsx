@@ -21,6 +21,7 @@ import Sidebard from '../../Dashboard/Sidebard'
 import { Dashboard } from '../../Dashboard/Dashboard'
 import Profile from '../../Dashboard/Pages/AdminProfile'
 import AllProducts from '../../Dashboard/Pages/AllProducts'
+import AddProducts from '../../Dashboard/Pages/AddProducts'
 
 
 const router = createBrowserRouter([
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/all-products',
                 element: <AllProducts />
+            },
+            {
+                path: '/dashboard/add-products',
+                element: <AddProducts />
             },
         ]
     }

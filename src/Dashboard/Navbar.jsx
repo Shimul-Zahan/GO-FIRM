@@ -30,7 +30,7 @@ const Navbar = () => {
     const userPhotoUrl = user?.reloadUserInfo?.photoUrl || `http://localhost:8000/image/${loginUser?.image}`;
 
     return (
-        <nav className="bg-[#151c47] flex justify-between h-[80px] w-full items-center pr-10 lg:px-10 text-2xl">
+        <nav className="bg-[#151c47] sticky top-0 flex justify-between h-[80px] w-full items-center pr-10 lg:px-10 text-2xl">
             {/* Left side */}
             <div className="flex items-center gap-5">
                 {
