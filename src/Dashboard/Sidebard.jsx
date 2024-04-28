@@ -40,13 +40,13 @@ const Sidebard = () => {
                             </div>
                         </NavLink>
                         <div>
-                            <h1 className='px-12 mt-5 text-base text-[#b9a683] mb-5 uppercase'>Products Maintains</h1>
+                            <h1 className='px-12 mt-5 text-base text-[#b9a683] mb-5 uppercase'>Store Room</h1>
                         </div>
                         <ul className="space-y-1 px-5">
-                            <NavLink to='/dashboard/products' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/all-products' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <FaCartPlus className='text-base' />
-                                    <h1 className='text-base'>Registration</h1>
+                                    <h1 className='text-base'>All Products</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
@@ -55,7 +55,7 @@ const Sidebard = () => {
                             <NavLink to='/dashboard/customer' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <FaUsers className='text-base' />
-                                    <h1 className='text-base'>Payments</h1>
+                                    <h1 className='text-base'>Add Products</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
@@ -64,7 +64,7 @@ const Sidebard = () => {
                             <NavLink to='/dashboard/transactions' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <MdOutlinePayments className='text-base' />
-                                    <h1 className='text-base'>Transactions</h1>
+                                    <h1 className='text-base'>Add Category</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
@@ -73,7 +73,7 @@ const Sidebard = () => {
                             <NavLink to='/dashboard/geography' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <BiWorld className='text-base' />
-                                    <h1 className='text-base'>Geography</h1>
+                                    <h1 className='text-base'>Others</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
@@ -115,22 +115,22 @@ const Sidebard = () => {
                             </NavLink>
                             <NavLink to='/dashboard/breakdown' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
-                                    <MdHomeFilled className='text-3xl' />
+                                    <MdHomeFilled className='text-base' />
                                     <h1 className='text-base'>Breakdown</h1>
                                 </div>
-                                <div className='pr- text-[#21295c]'>
+                                <div className='text-[#21295c] text-lg'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
                         </ul>
                     </div>
                     <div className='mt-6'>
-                        <h1 className="px-12 mt-5 text-xl text-[#b9a683] mb-5">Users and Moderators Management</h1>
+                        <h1 className="px-12 mt-5 text-xl text-[#b9a683] mb-5">Management Home</h1>
                         <ul className="space-y-1 px-5">
-                            <NavLink to='/dashboard/user' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/admin-profile' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <FaUsers className='text-base' />
-                                    <h1 className='text-base'>Users</h1>
+                                    <h1 className='text-base'>Admin Profile</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
@@ -149,6 +149,15 @@ const Sidebard = () => {
                                 <div className='flex justify-start items-center gap-3'>
                                     <GrDocumentPerformance className='text-base' />
                                     <h1 className='text-base'>Performance</h1>
+                                </div>
+                                <div className='pr- text-[#21295c]'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
+                                </div>
+                            </NavLink>
+                            <NavLink to='/dashboard/performance' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                                <div className='flex justify-start items-center gap-3'>
+                                    <GrDocumentPerformance className='text-base' />
+                                    <h1 className='text-base'>Message</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>

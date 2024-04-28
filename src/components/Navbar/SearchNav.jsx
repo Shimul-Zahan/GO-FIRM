@@ -6,16 +6,16 @@ import { FaClipboardList } from "react-icons/fa6";
 const SearchNav = () => {
     return (
         <div className="flex justify-center items-center gap-10">
-            <div className="h-11 w-[320px] bg-green-500 flex justify-center items-center rounded-2xl relative">
+            <div className="h-11 w-[550px] flex justify-center items-center rounded-3xl relative">
                 <input type="text" name="searchItem" placeholder="Search item here" className="h-full w-full rounded-2xl pl-10 outline-none border-none" />
                 <div className="absolute top-0 left-0">
                     <div className="h-11 w-[45px] flex justify-center items-center text-2xl">
                         <IoMdSearch />
                     </div>
                 </div>
-                <div className="absolute top-0 right-0">
-                    <div className="bg-black h-11 w-[100px] rounded-tr-2xl rounded-br-2xl text-white flex justify-center items-center text-base">
-                        <p>Search</p>
+                <div className="absolute top-0 right-0 cursor-pointer">
+                    <div className="bg-black h-11 w-[105px] rounded-tr-2xl rounded-br-2xl text-white flex justify-center items-center text-base">
+                        <p className="text-lg">Search</p>
                     </div>
                 </div>
             </div>

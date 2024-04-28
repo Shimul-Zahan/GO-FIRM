@@ -19,6 +19,8 @@ import Whitelist from '../../components/WhiteList/Whitelist'
 import Compare from '../../components/Compare/Compare'
 import Sidebard from '../../Dashboard/Sidebard'
 import { Dashboard } from '../../Dashboard/Dashboard'
+import Profile from '../../Dashboard/Pages/AdminProfile'
+import AllProducts from '../../Dashboard/Pages/AllProducts'
 
 
 const router = createBrowserRouter([
@@ -104,7 +106,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard />
-            }
+            },
+            {
+                path: '/dashboard/admin-profile',
+                element: <Profile />
+            },
+            {
+                path: '/dashboard/all-products',
+                element: <AllProducts />
+            },
         ]
     }
 ])
