@@ -50,6 +50,10 @@ const Navbar = () => {
       menu: 'Contact',
       link: '/contact',
     },
+    {
+      menu: 'Dashboard',
+      link: '/dashboard',
+    },
   ]
 
   return (
