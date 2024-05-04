@@ -51,6 +51,10 @@ const Navbar = () => {
       link: '/contact',
     },
     {
+      menu: 'Blogs',
+      link: '/blog',
+    },
+    {
       menu: 'Dashboard',
       link: '/dashboard',
     },

@@ -2,6 +2,7 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from
 import React, { createContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import auth from './firebase.config';
+import Password from 'antd/es/input/Password';
 
 export const MyContext = createContext(null);
 
@@ -21,60 +22,16 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log(currentUser, 'current user');
-            setUser(currentUser);
-            setLoading(false)
-            const userInfo = {
-                name: currentUser.reloadUserInfo?.displayName,
-                email: currentUser.reloadUserInfo?.email,
-                image: currentUser.reloadUserInfo?.photoUrl,
-                role: 'user',
-                verifyEmail: true,
-                from: 'goole'
-            }
-            console.log(userInfo);
-            const res = axios.post('http://localhost:8000/login', userInfo);
-            console.log(res.data);
-        })
-        return (() => {
-            unSubscribe();
-        })
-    }, [])
-
-    // sidebar works here
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-    // const toggleSidebar = () => {
-    //     setIsSidebarOpen(!isSidebarOpen);
-    // };
-
-    // darkmode // for darkmode here
-    const [darkMode, setDarkMode] = useState(() => {
-        const storedPreference = localStorage.getItem('darkMode');
-        return storedPreference ? JSON.parse(storedPreference) : false;
-    });
-
-    useEffect(() => {
-        const htmlElement = document.documentElement;
-        if (darkMode) {
-            htmlElement.classList.add('dark');
-        } else {
-            htmlElement.classList.remove('dark');
-        }
-        localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    }, [darkMode]);
+    const storedItem = localStorage.getItem("GOFIRM-LOGIN");
+    const login_user = JSON.parse(storedItem);
 
     const contenxtProperty = {
         user,
+        setUser,
         loading,
         googleLogin,
         logOut,
-        setIsSidebarOpen,
-        isSidebarOpen,
-        setDarkMode,
-        darkMode
+        login_user
     }
 
     return (

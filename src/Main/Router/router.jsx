@@ -22,6 +22,9 @@ import { Dashboard } from '../../Dashboard/Dashboard'
 import Profile from '../../Dashboard/Pages/AdminProfile'
 import AllProducts from '../../Dashboard/Pages/AllProducts'
 import AddProducts from '../../Dashboard/Pages/AddProducts'
+import Blogs from '../../components/Blogs/Blogs'
+import AllCat from '../../Dashboard/Pages/AllCat'
+import AddCat from '../../Dashboard/Pages/AddCat'
 
 
 const router = createBrowserRouter([
@@ -98,6 +101,10 @@ const router = createBrowserRouter([
                 path: '/compare',
                 element: <Compare />,
             },
+            {
+                path: '/blog',
+                element: <Blogs />,
+            },
         ]
     },
     {
@@ -115,6 +122,14 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/all-products',
                 element: <AllProducts />
+            },
+            {
+                path: '/dashboard/all-cat',
+                element: <AllCat />
+            },
+            {
+                path: '/dashboard/add-cat',
+                element: <AddCat />
             },
             {
                 path: '/dashboard/add-products',

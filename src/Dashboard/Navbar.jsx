@@ -9,8 +9,6 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { MyContext } from '../Auth/AuthProvide';
 const Navbar = () => {
 
-    // setIsSidebarOpen,
-    // isSidebarOpen,
 
     const { user, logOut, setIsSidebarOpen, isSidebarOpen } = useContext(MyContext);
 

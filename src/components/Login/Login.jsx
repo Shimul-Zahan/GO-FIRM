@@ -1,10 +1,60 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import bgImage from '../../assets/login/login-bg.png';
 import gl from '../../assets/login/google.png';
 import fb from '../../assets/login/fb.png';
 import Navbar from '../Navbar/Navbar';
+import axios from 'axios';
+import { MyContext } from '../../Auth/AuthProvide';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const navigate = useNavigate('')
+    const {
+        googleLogin,
+    } = useContext(MyContext);
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const login = async e => {
+        e.preventDefault();
+        const user = { email, password }
+        try {
+            const res = await axios.post('http://localhost:5000/api/login', user);
+            if (res?.data?.email) {
+                navigate('/');
+                localStorage.setItem("GOFIRM-LOGIN", JSON.stringify(res?.data));
+            }
+        } catch (error) {
+            console.error('Error adding category:', error);
+        }
+    }
+
+    const createAccountWithGoogle = () => {
+        googleLogin()
+            .then(res => {
+                const userInfo = {
+                    name: res.user?.reloadUserInfo?.displayName,
+                    email: res.user?.reloadUserInfo?.email,
+                    image: res.user?.reloadUserInfo?.photoUrl,
+                    password: 'google',
+                    role: 'google',
+                };
+                console.log(userInfo);
+                axios.post('http://localhost:5000/api/googleLogin', userInfo)
+                    .then(response => {
+                        if (response?.data?.email) {
+                            navigate('/');
+                            localStorage.setItem("GOFIRM-LOGIN", JSON.stringify(response?.data));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.message);
+                    });
+            })
+            .catch(err => setError(err.message.slice(9, 100)));
+    };
+
+
     return (
         <>
             <Navbar />
@@ -13,27 +63,27 @@ const Login = () => {
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    height: '100vh', // Adjust height as needed
+                    height: '100vh',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}
             >
                 <div className='lg:w-[600px] mx-auto shadow-xl bg-white p-16'>
-                    <form>
+                    <form onSubmit={login}>
                         <div>
                             <h1 className='text-4xl font-bold text-center my-4'>Login Account</h1>
                             <ul className='flex justify-center items-center gap-2 pb-10'>
-                                <li>Home</li>
+                                <Link to='/' className='underline'>Home</Link>
                                 <li></li>
-                                <li>Register Now</li>
+                                <Link className='underline' to='/reg'>Register Now</Link>
                             </ul>
                         </div>
                         <div className='flex justify-center items-center gap-2 pb-8'>
-                            <div className='border border-black w-full flex justify-center items-center gap-41 cursor-pointer'>
+                            <button onClick={createAccountWithGoogle} className='border border-black w-full flex justify-center items-center gap-41 cursor-pointer'>
                                 <img src={gl} alt="" className='h-12 w-12' />
                                 <h1>Login With Google</h1>
-                            </div>
+                            </button>
                             <div className='border border-black w-full flex justify-center items-center gap-1 cursor-pointer'>
                                 <img src={fb} alt="" className='h-12 w-12' />
                                 <h1>Login With Facebook</h1>
@@ -47,11 +97,11 @@ const Login = () => {
 
                         <div className='space-y-8'>
                             <div className='relative'>
-                                <input type="text" placeholder='shimul@gmail.com ' className='border border-black py-3 px-5 w-full' />
+                                <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder='shimul@gmail.com ' className='border border-black py-3 px-5 w-full' />
                                 <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Your Email</h1>
                             </div>
                             <div className='relative'>
-                                <input type="text" placeholder='********' className='border border-black py-3 px-5 w-full' />
+                                <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder='********' className='border border-black py-3 px-5 w-full' />
                                 <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Your Password</h1>
                             </div>
                             <button type='submit' className='border-2 bg-black text-white border-black py-3 px-5 w-full'>

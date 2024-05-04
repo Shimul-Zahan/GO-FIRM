@@ -2,11 +2,17 @@ import { IoMdSearch } from "react-icons/io";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa6";
+import { useContext } from "react";
+import { MyContext } from "../../Auth/AuthProvide";
+import { Link } from "react-router-dom";
 
 const SearchNav = () => {
+
+    const { login_user } = useContext(MyContext);
+
     return (
         <div className="flex justify-center items-center gap-10">
-            <div className="h-11 w-[550px] flex justify-center items-center rounded-3xl relative">
+            <div className="h-11 w-[300px] flex justify-center items-center rounded-3xl relative">
                 <input type="text" name="searchItem" placeholder="Search item here" className="h-full w-full rounded-2xl pl-10 outline-none border-none" />
                 <div className="absolute top-0 left-0">
                     <div className="h-11 w-[45px] flex justify-center items-center text-2xl">
@@ -21,10 +27,19 @@ const SearchNav = () => {
             </div>
             <div className="flex justify-center items-center gap-4">
                 <div className="flex justify-center items-center gap-2">
-                    <div className="bg-[#7d9e77] text-2xl p-2 rounded-full text-white">
-                        <LuUser2 />
+                    <div className="bg-[#7d9e77] text-2xl p-1 rounded-full text-white">
+                        {login_user && login_user.role !== 'google' ? (
+                            <img src={`http://localhost:5000/image/${login_user.image}`} className="h-8 w-8 rounded-full" alt="" />
+                        ) : login_user?.role === 'google' ? (
+                                <img src={login_user.image} className="h-8 w-8 rounded-full" alt="" />
+                        ) : (
+                            <LuUser2 />
+                        )}
                     </div>
-                    <p className="text-white"><span className="text-[#92b08d]">Hello</span> <br /> Register</p>
+                    {
+                        login_user ? <p className="text-white"><span className="text-[#92b08d]">Hello</span> <br /> {login_user?.name}</p> :
+                            <Link to='/reg' className="text-white"><span className="text-[#92b08d]">Hello</span> <br /> Register Now</Link>
+                    }
                 </div>
                 <div className="bg-[#7d9e77] text-2xl p-2 rounded-full text-white relative">
                     <FaClipboardList />
