@@ -7,6 +7,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { PiArrowsLeftRight, PiEyeLight } from "react-icons/pi";
 import { IoBagRemoveOutline } from "react-icons/io5";
 import { IoMdSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const ShopPage = () => {
 
@@ -290,14 +291,14 @@ const ShopPage = () => {
                                                 </div>
                                             </button>
                                         </div>
-                                        <div>
+                                        <Link to={`/details/${product?._id}`}>
                                             <div className="mt-5 text-lg">
                                                 <h1 className="font-thin">{product?.selectedCat}</h1>
                                                 <h1 className="font-semibold text-2xl">{product?.productName}</h1>
                                                 <h1>{product?.status}</h1>
                                                 <h1>{product?.price}</h1>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 )}
                             </div>

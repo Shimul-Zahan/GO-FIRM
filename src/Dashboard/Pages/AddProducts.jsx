@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const AddProducts = () => {
 
+    const navigate = useNavigate();
     const [cats, setCat] = useState([])
     const [showName, setShowName] = useState({});
     const [showImagePreview, setShowImagePreview] = useState({});
@@ -68,6 +69,7 @@ const AddProducts = () => {
             );
             if (res.data) {
                 toast.success('Category added successfully!!!')
+                navigate('/');
             }
         } catch (error) {
             console.error('Error fetching categories:', error);

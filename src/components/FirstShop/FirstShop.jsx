@@ -95,7 +95,7 @@ const FirstShop = () => {
             <div className="flex items-center justify-center mt-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     {prods && prods.map(product =>
-                        <Link to={`/details/${product?._id}`} className="group relative items-center justify-center overflow-hidden cursor-pointer">
+                        <div className="group relative items-center justify-center overflow-hidden cursor-pointer">
                             <div className="h-96 w-72">
                                 <img src={`http://localhost:5000/image/${product.image}`} alt="" />
                             </div>
@@ -130,15 +130,15 @@ const FirstShop = () => {
                                     </div>
                                 </button>
                             </div>
-                            <div>
+                            <Link to={`/details/${product?._id}`}>
                                 <div className="mt-5 text-lg">
                                     <h1 className="font-thin">{product?.selectedCat}</h1>
                                     <h1 className="font-semibold text-2xl">{product?.productName}</h1>
                                     <h1>{product?.status}</h1>
                                     <h1>{product?.price}</h1>
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     )}
                 </div>
             </div>

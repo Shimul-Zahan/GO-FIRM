@@ -102,6 +102,7 @@ const BillingDetails = () => {
             totalPrice,
             email: login_user?.email,
             name: login_user?.name,
+            prods: prods.map(prod => ({ name: prod.productName, price: prod.price }))
         }
 
         try {
