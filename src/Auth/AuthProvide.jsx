@@ -24,6 +24,7 @@ const AuthProvider = ({ children }) => {
 
     const storedItem = localStorage.getItem("GOFIRM-LOGIN");
     const login_user = JSON.parse(storedItem);
+    const [state, setState]=useState(false)
 
     const contenxtProperty = {
         user,
@@ -31,7 +32,8 @@ const AuthProvider = ({ children }) => {
         loading,
         googleLogin,
         logOut,
-        login_user
+        login_user,
+        setState,state
     }
 
     return (

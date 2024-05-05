@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import image from '../../assets/popularP/frozen.jpg'
 import { Link } from 'react-router-dom'
+import { MyContext } from '../../Auth/AuthProvide'
+import axios from 'axios'
 
 const Whitelist = () => {
+
+    const { login_user, state, setState } = useContext(MyContext);
+    const [white, setWhite] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/get-white?email=${login_user?.email}`);
+                setWhite(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, [state]);
+
+
+    const handleDelete = async (itemId) => {
+        setState(false)
+        try {
+            await axios.delete(`http://localhost:5000/api/whitelist/${itemId}`);
+            setState(true)
+            setWhite(white.filter(item => item._id !== itemId));
+        } catch (error) {
+            console.error('Error deleting whitelist item:', error);
+        }
+    };
+
+
     return (
         <div className='min-h-screen'>
             <Navbar />
@@ -21,57 +53,27 @@ const Whitelist = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='py-5'>
-                        <div className='grid lg:grid-cols-2'>
-                            <div className='grid grid-cols-4 justify-center items-center'>
-                                <h1 className='col-span-3'>
-                                    <div className='flex justify-start gap-2 items-center'>
-                                        <img src={image} alt="" className='h-24' />
-                                        <h1>Apple Kashmiri</h1>
+                    {
+                        white && white.map(w =>
+                            <div className='py-5'>
+                                <div className='grid lg:grid-cols-2'>
+                                    <div className='grid grid-cols-4 justify-center items-center'>
+                                        <h1 className='col-span-3'>
+                                            <div className='flex justify-start gap-2 items-center'>
+                                                <img src={`http://localhost:5000/image/${w.image}`} alt="" className='h-24' />
+                                                <h1>{w.productName}</h1>
+                                            </div>
+                                        </h1>
+                                        <h1 className='col-span-1'>{w.price}</h1>
                                     </div>
-                                </h1>
-                                <h1 className='col-span-1'>$25.00</h1>
-                            </div>
-                            <div className='grid grid-cols-4 justify-center items-center'>
-                                <Link to='/cart' className='col-span-3 bg-green-500 px-10 py-2 w-[35%]'>View Cart</Link>
-                                <button className='col-span-1 hover:text-red-500 flex justify-normal'>Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='py-5'>
-                        <div className='grid lg:grid-cols-2'>
-                            <div className='grid grid-cols-4 justify-center items-center'>
-                                <h1 className='col-span-3'>
-                                    <div className='flex justify-start gap-2 items-center'>
-                                        <img src={image} alt="" className='h-24' />
-                                        <h1>Apple Kashmiri</h1>
+                                    <div className='grid grid-cols-4 justify-center items-center'>
+                                        <Link to='/cart' className='col-span-3 bg-green-500 px-10 py-2 w-[35%]'>View Cart</Link>
+                                        <button onClick={() => handleDelete(w._id)} className='col-span-1 hover:text-red-500 flex justify-normal'>Delete</button>
                                     </div>
-                                </h1>
-                                <h1 className='col-span-1'>$25.00</h1>
+                                </div>
                             </div>
-                            <div className='grid grid-cols-4 justify-center items-center'>
-                                <Link to='/cart' className='col-span-3 bg-green-500 px-10 py-2 w-[35%]'>View Cart</Link>
-                                <button className='col-span-1 hover:text-red-500 flex justify-normal'>Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='pt-5 pb-10 border-gray-200 border-b-2'>
-                        <div className='grid lg:grid-cols-2'>
-                            <div className='grid grid-cols-4 justify-center items-center'>
-                                <h1 className='col-span-3'>
-                                    <div className='flex justify-start gap-2 items-center'>
-                                        <img src={image} alt="" className='h-24' />
-                                        <h1>Apple Kashmiri</h1>
-                                    </div>
-                                </h1>
-                                <h1 className='col-span-1'>$25.00</h1>
-                            </div>
-                            <div className='grid grid-cols-4 justify-center items-center'>
-                                <Link to='/cart' className='col-span-3 bg-green-500 px-10 py-2 w-[35%]'>View Cart</Link>
-                                <button className='col-span-1 hover:text-red-500 flex justify-normal'>Delete</button>
-                            </div>
-                        </div>
-                    </div>
+                        )
+                    }
                     <div className='py-16'>
                         <Link to='/cart' className='border border-black px-10 py-3 hover:bg-green-500 duration-300 mt-16'>Go to Cart</Link>
                     </div>

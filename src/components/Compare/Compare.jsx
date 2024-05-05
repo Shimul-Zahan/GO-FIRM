@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import image1 from '../../assets/popularP/frozen.jpg'
 import image2 from '../../assets/popularP/slider2.jpg'
+import { MyContext } from '../../Auth/AuthProvide'
+import axios from 'axios'
 
 const Compare = () => {
+
+    // /get-to-compare
+    const [cats, setCat] = useState([]);
+    const { login_user } = useContext(MyContext)
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/get-to-compare?email=${login_user?.email}`);
+                setCat(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    console.log(cats[0]);
+
     return (
         <div className='min-h-screen'>
             <Navbar />
@@ -15,12 +38,12 @@ const Compare = () => {
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-t border-b border-gray-400 py-5'>
-                            <img src={image1} alt="" />
-                            <h1 className='text-xl font-bold'>Ergonomic Linen Pants</h1>
+                            <img src={`http://localhost:5000/image/${cats[0]?.image}`} alt="" />
+                            <h1 className='text-xl font-bold'>{cats[0]?.productName}</h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border border-gray-400 py-5'>
-                            <img src={image1} alt="" />
-                            <h1 className='text-xl font-bold'>Ergonomic Linen Pants</h1>
+                            <img src={`http://localhost:5000/image/${cats[1]?.image}`} alt="" />
+                            <h1 className='text-xl font-bold'>{cats[1]?.productName}</h1>
                         </div>
                     </div>
                 </div>
@@ -30,10 +53,10 @@ const Compare = () => {
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center'>In a botanical sense, a fruit is the fleshy or dry ripened ovary of a flowering plant, enclosing the seed or seeds. Apricots, bananas, and grapes, as </h1>
+                            <h1 className='px-5 text-base text-center'>{cats[1]?.orderNotes} </h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center'>In a botanical sense, a fruit is the fleshy or dry ripened ovary of a flowering plant, enclosing the seed or seeds. Apricots, bananas, and grapes, as </h1>
+                            <h1 className='px-5 text-base text-center'>{cats[1]?.orderNotes}</h1>
                         </div>
                     </div>
                 </div>
@@ -43,10 +66,10 @@ const Compare = () => {
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center font-bold'>$25.00</h1>
+                            <h1 className='px-5 text-base text-center font-bold'>{cats[0]?.price}</h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center font-bold'>$35.00</h1>
+                            <h1 className='px-5 text-base text-center font-bold'>{cats[1]?.price}</h1>
                         </div>
                     </div>
                 </div>
@@ -65,40 +88,27 @@ const Compare = () => {
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-[120px_1fr]">
                     <div class="border-l border-b border-r border-gray-400 flex justify-center items-center">
-                        <h1 className='font-bold'>Rating</h1>
+                        <h1 className='font-bold'>Quality</h1>
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center'>4.6 later start hobe</h1>
+                            <h1 className='px-5 text-base text-center'>{cats[0]?.quality}</h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center'>4.8 later start hobe</h1>
+                            <h1 className='px-5 text-base text-center'>{cats[1]?.quality}</h1>
                         </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-[120px_1fr]">
                     <div class="border-l border-b border-r border-gray-400 flex justify-center items-center">
-                        <h1 className='font-bold'>Remove</h1>
+                        <h1 className='font-bold'>Availability</h1>
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center hover:text-red-500'>Remove</h1>
+                            <h1 className='px-5 text-base text-center hover:text-red-500'>{cats[0]?.status}</h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center hover:text-red-500'>Remove</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-[120px_1fr]">
-                    <div class="border-l border-b border-r border-gray-400 flex justify-center items-center">
-                        <h1 className='font-bold'>Remove</h1>
-                    </div>
-                    <div class="grid grid-cols-2">
-                        <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center hover:text-red-500'>Remove</h1>
-                        </div>
-                        <div className='flex justify-center items-center flex-col space-y-2 border-b border-r border-gray-400 py-5'>
-                            <h1 className='px-5 text-base text-center hover:text-red-500'>Remove</h1>
+                            <h1 className='px-5 text-base text-center hover:text-red-500'>{cats[1]?.status}</h1>
                         </div>
                     </div>
                 </div>

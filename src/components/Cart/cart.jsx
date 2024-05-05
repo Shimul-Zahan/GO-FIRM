@@ -1,9 +1,55 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import image from '../../assets/popularP/frozen.jpg'
 import { Link } from 'react-router-dom'
+import { MyContext } from '../../Auth/AuthProvide'
+import axios from 'axios'
 
 const CartItem = () => {
+
+    const { login_user, state } = useContext(MyContext);
+    const [prods, setProds] = useState([]);
+    const [white, setWhite] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [updatedPrice, setUpdatedPrice] = useState(totalPrice);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+                setProds(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, [state]);
+
+    useEffect(() => {
+        const calculateTotalPrice = () => {
+            let totalPrice = 0;
+            prods.forEach(item => {
+                totalPrice += item.price;
+            });
+            setTotalPrice(totalPrice);
+        };
+
+        calculateTotalPrice();
+    }, [prods]);
+
+
+    const handleDeleteItem = async (productId) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/delete-cart-item/${productId}`);
+            const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+            setProds(response.data);
+        } catch (error) {
+            console.error('Error deleting item from cart:', error);
+        }
+    };
+
+
     return (
         <>
             <Navbar />
@@ -17,58 +63,21 @@ const CartItem = () => {
                             <h1 className='col-span-1'></h1>
                         </div>
                     </div>
-                    <div className='py-5'>
-                        <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
-                            <div className='col-span-5'>
-                                <div className='flex justify-start gap-2 items-center'>
-                                    <img src={image} alt="" className='h-24' />
-                                    <h1>Apple Kashmiri</h1>
+                    {prods && prods.map(p =>
+                        <div className='py-5'>
+                            <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
+                                <div className='col-span-5'>
+                                    <div className='flex justify-start gap-2 items-center'>
+                                        <img src={`http://localhost:5000/image/${p.image}`} alt="" className='h-24' />
+                                        <h1>{p.productName}</h1>
+                                    </div>
                                 </div>
+                                <div className='col-span-2'>{p.price} TK</div>
+                                <div className='col-span-2'>1 KG</div>
+                                <button onClick={() => handleDeleteItem(p._id)} className='col-span-1 hover:text-red-500'>Remove</button>
                             </div>
-                            <div className='col-span-2'>$25.00</div>
-                            <div className='col-span-2'>1 KG</div>
-                            <button className='col-span-1 hover:text-red-500'>Remove</button>
                         </div>
-                    </div>
-                    <div className='py-5'>
-                        <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
-                            <div className='col-span-5'>
-                                <div className='flex justify-start gap-2 items-center'>
-                                    <img src={image} alt="" className='h-24' />
-                                    <h1>Apple Kashmiri</h1>
-                                </div>
-                            </div>
-                            <div className='col-span-2'>$25.00</div>
-                            <div className='col-span-2'>1 KG</div>
-                            <button className='col-span-1 hover:text-red-500'>Remove</button>
-                        </div>
-                    </div>
-                    <div className='py-5'>
-                        <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
-                            <div className='col-span-5'>
-                                <div className='flex justify-start gap-2 items-center'>
-                                    <img src={image} alt="" className='h-24' />
-                                    <h1>Apple Kashmiri</h1>
-                                </div>
-                            </div>
-                            <div className='col-span-2'>$25.00</div>
-                            <div className='col-span-2'>1 KG</div>
-                            <button className='col-span-1 hover:text-red-500'>Remove</button>
-                        </div>
-                    </div>
-                    <div className='py-5'>
-                        <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
-                            <div className='col-span-5'>
-                                <div className='flex justify-start gap-2 items-center'>
-                                    <img src={image} alt="" className='h-24' />
-                                    <h1>Apple Kashmiri</h1>
-                                </div>
-                            </div>
-                            <div className='col-span-2'>$25.00</div>
-                            <div className='col-span-2'>1 KG</div>
-                            <button className='col-span-1 hover:text-red-500'>Remove</button>
-                        </div>
-                    </div>
+                    )}
                 </div>
                 <div className="lg:col-span-2 bg-white shadow-2xl">
                     <section>
@@ -80,7 +89,7 @@ const CartItem = () => {
                                             <dl class="space-y-1 border-b border-black text-sm text-gray-700">
                                                 <div class="flex pb-5 font-bold justify-between items-center">
                                                     <dt>Subtotal</dt>
-                                                    <dd>£250</dd>
+                                                    <dd>{totalPrice} TK</dd>
                                                 </div>
                                             </dl>
                                             {/* radio buttons */}
@@ -105,7 +114,8 @@ const CartItem = () => {
                                                             id="DeliveryStandard"
                                                             className="size-5 border-gray-300 text-blue-500"
                                                             defaultChecked
-                                                            // onChange={handleOptionChange}
+                                                            onClick={() => setUpdatedPrice(totalPrice)}
+                                                        // onChange={handleOptionChange}
                                                         />
                                                     </label>
                                                 </div>
@@ -128,6 +138,7 @@ const CartItem = () => {
                                                             id="DeliveryPriority"
                                                             className="size-5 border-gray-300 text-blue-500"
                                                             // onChange={handleOptionChange}
+                                                            onClick={() => setUpdatedPrice(totalPrice + 60)}
                                                         />
                                                     </label>
                                                 </div>
@@ -150,6 +161,7 @@ const CartItem = () => {
                                                             id="DeliveryPriority"
                                                             className="size-5 border-gray-300 text-blue-500"
                                                             // onChange={handleOptionChange}
+                                                            onClick={() => setUpdatedPrice(totalPrice)}
                                                         />
                                                     </label>
                                                 </div>
@@ -157,7 +169,7 @@ const CartItem = () => {
                                             <dl class="space-y-1 border-b border-black text-sm text-gray-700">
                                                 <div class="flex pb-5 font-bold justify-between items-center">
                                                     <dt>Total</dt>
-                                                    <dd>£250</dd>
+                                                    <dd>{updatedPrice}</dd>
                                                 </div>
                                             </dl>
                                             <div class="flex justify-end">

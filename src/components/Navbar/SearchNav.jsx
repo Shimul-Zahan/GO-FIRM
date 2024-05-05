@@ -2,13 +2,43 @@ import { IoMdSearch } from "react-icons/io";
 import { LuUser2 } from "react-icons/lu";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa6";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../Auth/AuthProvide";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SearchNav = () => {
 
-    const { login_user } = useContext(MyContext);
+    const { login_user, state } = useContext(MyContext);
+    const [prods, setProds] = useState([]);
+    const [white, setWhite] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+                setProds(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, [state]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/get-white?email=${login_user?.email}`);
+                setWhite(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, [state]);
 
     return (
         <div className="flex justify-center items-center gap-10">
@@ -31,7 +61,7 @@ const SearchNav = () => {
                         {login_user && login_user.role !== 'google' ? (
                             <img src={`http://localhost:5000/image/${login_user.image}`} className="h-8 w-8 rounded-full" alt="" />
                         ) : login_user?.role === 'google' ? (
-                                <img src={login_user.image} className="h-8 w-8 rounded-full" alt="" />
+                            <img src={login_user.image} className="h-8 w-8 rounded-full" alt="" />
                         ) : (
                             <LuUser2 />
                         )}
@@ -41,14 +71,14 @@ const SearchNav = () => {
                             <Link to='/reg' className="text-white"><span className="text-[#92b08d]">Hello</span> <br /> Register Now</Link>
                     }
                 </div>
-                <div className="bg-[#7d9e77] text-2xl p-2 rounded-full text-white relative">
+                <Link to='/wishlist' className="bg-[#7d9e77] text-2xl p-2 rounded-full text-white relative">
                     <FaClipboardList />
-                    <h1 className="absolute -top-1 -right-1 text-[10px] bg-white text-black h-4 w-4 rounded-full flex justify-center items-center">02</h1>
-                </div>
-                <div className="bg-[#7d9e77] text-2xl p-2 rounded-full text-white relative">
+                    <h1 className="absolute -top-1 -right-1 text-[10px] bg-white text-black h-4 w-4 rounded-full flex justify-center items-center">{white?.length}</h1>
+                </Link>
+                <Link to="/cart" className="bg-[#7d9e77] text-2xl p-2 rounded-full text-white relative">
                     <MdOutlineShoppingBag />
-                    <h1 className="absolute -top-1 -right-1 text-[10px] bg-white text-black h-4 w-4 rounded-full flex justify-center items-center">03</h1>
-                </div>
+                    <h1 className="absolute -top-1 -right-1 text-[10px] bg-white text-black h-4 w-4 rounded-full flex justify-center items-center">{prods?.length}</h1>
+                </Link>
             </div>
         </div>
     )

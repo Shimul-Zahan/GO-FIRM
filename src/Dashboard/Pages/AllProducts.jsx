@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../Components/ProductCard'
 import Pagination from '../Components/Pagination'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const AllProducts = () => {
+
+    const [prods, setProds] = useState([]);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/get-all-products');
+                setProds(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, [isDeleting]);
+
     return (
         <div>
             <div className="grid p-4 grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 overflow-y-scroll">
@@ -15,21 +33,17 @@ const AllProducts = () => {
                         </Link>
                     </div>
                     <div className='grid lg:grid-cols-3 gap-5'>
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
-                        <ProductCard image={'https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg?cs=srgb&dl=pexels-pixabay-209439.jpg&fm=jpg'} />
-                        <ProductCard image={'https://img.freepik.com/premium-photo/food-isolated_181303-35.jpg?w=1380'} />
+                        {prods && prods.map(product =>
+                            <ProductCard
+                                image={product?.image}
+                                name={product?.productName}
+                                cat={product?.selectedCat}
+                                price={product?.price}
+                                rating={product?.status}
+                                product={product}
+                                setIsDeleting={setIsDeleting}
+                            />
+                        )}
                     </div>
                 </div>
             </div>

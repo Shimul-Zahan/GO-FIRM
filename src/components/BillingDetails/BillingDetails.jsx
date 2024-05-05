@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import PaymentCard from '../../Shared/PaymentCard';
+import axios from 'axios';
+import { MyContext } from '../../Auth/AuthProvide';
+import { toast } from 'react-toastify';
 
 const BillingDetails = () => {
 
@@ -17,11 +20,97 @@ const BillingDetails = () => {
         }
     };
 
-    console.log(paymentOption);
-    console.log(showPaymentModal);
-
     const handleBilling = (e) => {
         e.preventDefault();
+    }
+
+
+    const { login_user, state } = useContext(MyContext);
+    const [prods, setProds] = useState([]);
+    const [white, setWhite] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [updatedPrice, setUpdatedPrice] = useState(totalPrice);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+                setProds(response.data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchData();
+    }, [state]);
+
+    useEffect(() => {
+        const calculateTotalPrice = () => {
+            let totalPrice = 0;
+            prods.forEach(item => {
+                totalPrice += item.price;
+            });
+            setTotalPrice(totalPrice);
+        };
+
+        calculateTotalPrice();
+    }, [prods]);
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [companyName, setCompanyName] = useState('');
+    const [country, setCountry] = useState('');
+    const [streetAddress, setStreetAddress] = useState('');
+    const [townCity, setTownCity] = useState('');
+    const [stateCounty, setStateCounty] = useState('');
+    const [postcodeZIP, setPostcodeZIP] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [orderNotes, setOrderNotes] = useState('');
+    const [userInfo, setUserInfo] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = {
+            firstName,
+            lastName,
+            companyName,
+            country,
+            streetAddress,
+            townCity,
+            stateCounty,
+            postcodeZIP,
+            phone,
+            email,
+            orderNotes
+        };
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/submit-billing', formData);
+            setUserInfo(formData)
+            console.log(response.data);
+            toast.success('register successfully');
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error submitting billing details:', error);
+        }
+    };
+
+
+    const checkout = async () => {
+        const data = {
+            totalPrice,
+            email: login_user?.email,
+            name: login_user?.name,
+        }
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/checkout', data);
+            toast.success('register successfully');
+            window.location.replace(response.data?.url);
+        } catch (error) {
+            console.error('Error submitting billing details:', error);
+        }
     }
 
     return (
@@ -31,7 +120,7 @@ const BillingDetails = () => {
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-5 lg:gap-8 max-w-7xl mx-auto py-10">
                 <div className="lg:col-span-3 bg-white shadow-2xl pb-10">
                     <div className='lg:w-full mx-auto px-10'>
-                        <form onSubmit={handleBilling}>
+                        <form onSubmit={handleSubmit}>
                             <div>
                                 <h1 className='text-4xl font-bold text-center my-10'>Billing Details Form</h1>
                             </div>
@@ -44,46 +133,46 @@ const BillingDetails = () => {
                             <div className='space-y-8'>
                                 <div className='grid grid-cols-2 items-center gap-5 w-full'>
                                     <div className='relative'>
-                                        <input type="text" placeholder='Shimul Zahan ' className='border border-black py-3 px-5 w-full' />
+                                        <input type="text" onChange={(e) => setFirstName(e.target.value)} placeholder='Shimul Zahan ' className='border border-black py-3 px-5 w-full' />
                                         <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>First Name</h1>
                                     </div>
                                     <div className='relative'>
-                                        <input type="text" placeholder='Shimul Zahan ' className='border border-black py-3 px-5 w-full' />
+                                        <input type="text" onChange={(e) => setLastName(e.target.value)} placeholder='Shimul Zahan ' className='border border-black py-3 px-5 w-full' />
                                         <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Last Name</h1>
                                     </div>
                                 </div>
                                 <div className='relative'>
-                                    <input type="text" placeholder='shimul LTD' className='border border-black py-3 px-5 w-full' />
+                                    <input type="text" onChange={(e) => setCompanyName(e.target.value)} placeholder='shimul LTD' className='border border-black py-3 px-5 w-full' />
                                     <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Company name (optional)</h1>
                                 </div>
                                 <div className='relative'>
-                                    <input type="text" placeholder='Bangladesh (BD) ' className='border border-black py-3 px-5 w-full' />
+                                    <input required type="text" placeholder='Bangladesh (BD) ' onChange={(e) => setCountry(e.target.value)} className='border border-black py-3 px-5 w-full' />
                                     <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Country / Region</h1>
                                 </div>
                                 <div className='relative'>
-                                    <input type="text" placeholder='House Number and Street Number ' className='border border-black py-3 px-5 w-full' />
+                                    <input type="text" onChange={(e) => setStreetAddress(e.target.value)} placeholder='House Number and Street Number ' className='border border-black py-3 px-5 w-full' />
                                     <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Street address</h1>
                                 </div>
                                 <div className='relative'>
-                                    <input type="text" placeholder='Rajshahi ' className='border border-black py-3 px-5 w-full' />
+                                    <input required type="text" placeholder='Rajshahi ' onChange={(e) => setTownCity(e.target.value)} className='border border-black py-3 px-5 w-full' />
                                     <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Town / City</h1>
                                 </div>
                                 <div className='grid grid-cols-2 gap-5 justify-center items-center'>
                                     <div className='relative'>
-                                        <input type="text" placeholder='Bangladesh' className='border border-black py-3 px-5 w-full' />
+                                        <input required type="text" placeholder='Bangladesh' onChange={(e) => setStateCounty(e.target.value)} className='border border-black py-3 px-5 w-full' />
                                         <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>State / County</h1>
                                     </div>
                                     <div className='relative'>
-                                        <input type="text" placeholder='Zip Code ' className='border border-black py-3 px-5 w-full' />
+                                        <input required type="text" placeholder='Zip Code ' onChange={(e) => setPostcodeZIP(e.target.value)} className='border border-black py-3 px-5 w-full' />
                                         <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Postcode ZIP</h1>
                                     </div>
                                 </div>
                                 <div className='relative'>
-                                    <input type="text" placeholder='+880 12345678' className='border border-black py-3 px-5 w-full' />
+                                    <input required type="text" placeholder='+880 12345678' onChange={(e) => setPhone(e.target.value)} className='border border-black py-3 px-5 w-full' />
                                     <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Phone</h1>
                                 </div>
                                 <div className='relative'>
-                                    <input type="email" placeholder='abc@gmail.com ' className='border border-black py-3 px-5 w-full' />
+                                    <input required type="email" placeholder='abc@gmail.com ' onChange={(e) => setEmail(e.target.value)} className='border border-black py-3 px-5 w-full' />
                                     <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Email address </h1>
                                 </div>
                                 <div className='relative'>
@@ -91,6 +180,7 @@ const BillingDetails = () => {
                                         id="OrderNotes"
                                         className="mt-2 p-4 w-full border-black border align-top shadow-sm sm:text-sm"
                                         rows="4"
+                                        onChange={(e) => setOrderNotes(e.target.value)}
                                         placeholder="Enter any additional order notes..."
                                     ></textarea>
                                     <h1 className='absolute -top-1 left-4 px-1 bg-white text-sm'>Order notes (optional)</h1>
@@ -114,42 +204,36 @@ const BillingDetails = () => {
                                     <div class="mt-8 flex justify-end border-t border-gray-500 pt-8">
                                         <div class="w-screen max-w-lg space-y-4">
                                             <dl class="space-y-1 text-sm text-gray-700">
-                                                <div class="flex justify-between items-center">
-                                                    <dt>Mango</dt>
-                                                    <dt>1Kg</dt>
-                                                    <dd>£250</dd>
-                                                </div>
-                                                <div class="flex justify-between items-center">
-                                                    <dt>Banana</dt>
-                                                    <dt>1Kg</dt>
-                                                    <dd>£250</dd>
-                                                </div>
-                                                <div class="flex justify-between items-center">
-                                                    <dt>Fuck</dt>
-                                                    <dt>1Kg</dt>
-                                                    <dd>£250</dd>
-                                                </div>
+                                                {
+                                                    prods && prods.map(p =>
+                                                        <div class="grid grid-cols-5">
+                                                            <dt className='col-span-3'>{p.productName}</dt>
+                                                            <dt>{p.quantity} KG</dt>
+                                                            <dd className='text-end'>{p.price}</dd>
+                                                        </div>
+                                                    )
+                                                }
                                                 <span className="flex items-center py-5">
                                                     <span className="h-px flex-1 bg-black"></span>
                                                 </span>
                                                 <div class="flex justify-between">
                                                     <dt>Subtotal</dt>
-                                                    <dd>£250</dd>
+                                                    <dd>{totalPrice}</dd>
                                                 </div>
 
                                                 <div class="flex justify-between">
                                                     <dt>VAT</dt>
-                                                    <dd>£25</dd>
+                                                    <dd>£99</dd>
                                                 </div>
 
                                                 <div class="flex justify-between">
                                                     <dt>Discount</dt>
-                                                    <dd>-£20</dd>
+                                                    <dd>-£29</dd>
                                                 </div>
 
                                                 <div class="flex justify-between !text-base font-medium">
                                                     <dt>Total</dt>
-                                                    <dd>£200</dd>
+                                                    <dd>{totalPrice + 99 - 29}</dd>
                                                 </div>
                                             </dl>
 
@@ -205,14 +289,14 @@ const BillingDetails = () => {
                                             </fieldset>
 
                                             {/* modal here */}
-                                            {showPaymentModal && (
+                                            {/* {showPaymentModal && (
                                                 <div className="modal">
                                                     <div className="modal-content">
                                                         <span className="close" onClick={() => setShowPaymentModal(false)}>&times;</span>
                                                         <PaymentCard />
                                                     </div>
                                                 </div>
-                                            )}
+                                            )} */}
                                             {/* coupons here */}
                                             <div class="flex justify-end">
                                                 <span
@@ -239,12 +323,11 @@ const BillingDetails = () => {
 
                                             {/* checkout buttons */}
                                             <div class="flex justify-end">
-                                                <a
-                                                    href="#"
+                                                <button onClick={checkout}
                                                     class="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-gray-600"
                                                 >
                                                     Checkout
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

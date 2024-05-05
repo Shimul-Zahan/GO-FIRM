@@ -5,15 +5,14 @@ import { PiEyeLight } from "react-icons/pi";
 import { IoBagRemoveOutline } from "react-icons/io5";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import icon from '../../assets/details/Screenshot 2024-04-26 033159.png'
-import payment from '../../assets/details/Screenshot 2024-04-26 033351.png'
 import { MyContext } from "../../Auth/AuthProvide";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 
 const FirstShop = () => {
 
-    const { login_user } = useContext(MyContext);
+    const { login_user, setState } = useContext(MyContext);
     const [prods, setProds] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -44,11 +43,13 @@ const FirstShop = () => {
 
     // Function to add product to cart
     const addToCart = async (selectedProduct) => {
+        setState(false)
         const { email } = login_user;
         const productWithUserEmail = { ...selectedProduct, email };
         try {
             const response = await axios.post('http://localhost:5000/api/add-to-cart', productWithUserEmail);
             console.log(response.data);
+            setState(true)
             toast.success(`${response?.data?.message}`);
         } catch (error) {
             console.error('Error adding product to cart:', error);
@@ -57,12 +58,14 @@ const FirstShop = () => {
 
     // Function to add product to cart
     const addToWhislist = async (selectedProduct) => {
+        setState(false)
         const { email } = login_user;
         const productWithUserEmail = { ...selectedProduct, email };
         console.log(productWithUserEmail);
         try {
             const response = await axios.post('http://localhost:5000/api/add-to-whislist', productWithUserEmail);
             console.log(response.data);
+            setState(true)
             toast.success(`${response?.data?.message}`);
         } catch (error) {
             console.error('Error adding product to cart:', error);
@@ -71,12 +74,14 @@ const FirstShop = () => {
 
     // Function to add product to cart
     const addToCompare = async (selectedProduct) => {
+        setState(false)
         const { email } = login_user;
         const productWithUserEmail = { ...selectedProduct, email };
         console.log(productWithUserEmail);
         try {
             const response = await axios.post('http://localhost:5000/api/add-to-compare', productWithUserEmail);
             console.log(response.data);
+            setState(true)
             toast.success(`${response?.data?.message}`);
         } catch (error) {
             console.error('Error adding product to cart:', error);
@@ -90,7 +95,7 @@ const FirstShop = () => {
             <div className="flex items-center justify-center mt-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     {prods && prods.map(product =>
-                        <div className="group relative items-center justify-center overflow-hidden cursor-pointer">
+                        <Link to={`/details/${product?._id}`} className="group relative items-center justify-center overflow-hidden cursor-pointer">
                             <div className="h-96 w-72">
                                 <img src={`http://localhost:5000/image/${product.image}`} alt="" />
                             </div>
@@ -133,7 +138,7 @@ const FirstShop = () => {
                                     <h1>{product?.price}</h1>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     )}
                 </div>
             </div>
@@ -166,13 +171,13 @@ const FirstShop = () => {
                                             <p className='text-xl'>1</p>
                                             <button className='text-xl'>+</button>
                                         </div>
-                                        <div onClick={() => addToCart(product)} className='border hover:bg-green-500 border-black w-full text-center py-2'>
+                                        <div onClick={() => addToCart(selectedProduct)} className='border hover:bg-green-500 border-black w-full text-center py-2'>
                                             <button>Add To Cart</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='border border-black bg-green-500 w-full text-center py-2'>
-                                    <button>Buy Now</button>
+                                    <Link to='/cart'>Buy Now</Link>
                                 </div>
                             </div>
                         </div>

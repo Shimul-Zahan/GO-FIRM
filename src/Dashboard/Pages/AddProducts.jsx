@@ -26,6 +26,8 @@ const AddProducts = () => {
     const [quantity, setQuantity] = useState('');
     const [addedTime, setAddedTime] = useState('');
     const [orderNotes, setOrderNotes] = useState('');
+    const [isTopRated, setIsTopRated] = useState('');
+    const [isTopSelling, setIsTopSelling] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,7 +54,9 @@ const AddProducts = () => {
             quantity,
             addedTime,
             orderNotes,
-            image: showName
+            image: showName,
+            isTopRated,
+            isTopSelling
         };
         try {
             const res = await axios.post('http://localhost:5000/api/add-product', product,
@@ -141,6 +145,32 @@ const AddProducts = () => {
                                         <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Status</h1>
                                     </div>
                                 </div>
+
+                                <div className='grid grid-cols-2 gap-5 justify-center items-center'>
+                                    <div className='relative'>
+                                        <select
+                                            className='border border-black bg-transparent py-3 px-5 w-full'
+                                            onChange={(e) => setIsTopRated(e.target.value)}
+                                        >
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Top Rated</h1>
+                                    </div>
+                                    <div className='relative'>
+                                        <select
+                                            className='border border-black bg-transparent py-3 px-5 w-full'
+                                            onChange={(e) => setIsTopSelling(e.target.value)}
+                                        >
+                                            <option value="">Select Rated?</option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        <h1 className='absolute -top-2 left-4 px-1 bg-white text-sm'>Top Selling</h1>
+                                    </div>
+                                </div>
+
+
                                 <div className='grid grid-cols-2 gap-5 justify-center items-center'>
                                     <div className='relative'>
                                         <input onChange={(e) => setQuantity(e.target.value)} type="text" required placeholder='quantity' className='border border-black py-3 px-5 w-full' />
