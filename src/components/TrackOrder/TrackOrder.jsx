@@ -43,9 +43,10 @@ const TrackOrder = () => {
     return (
         <div>
             <Navbar />
-            {
-                latestPayment &&
-                <div className='max-w-7xl mx-auto min-h-screen'>
+            <div className='max-w-7xl mx-auto min-h-screen'>
+                {
+                    latestPayment &&
+
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 py-10 bg-white shadow-2xl px-10">
                         <div className="bg-[#4f3e95] w-full flex flex-col justify-center items-center p-16 text-center text-white">
                             <img src={image} alt="" />
@@ -114,8 +115,8 @@ const TrackOrder = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     )
 }
