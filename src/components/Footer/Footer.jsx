@@ -113,15 +113,15 @@ const Footer = () => {
 
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
                         <div>
-                            <p className="font-medium text-white">Services</p>
+                            <p className="font-medium text-white text-lg">Services</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> 1on1 Coaching </a>
+                                    <a href="#" className="text-white transition hover:opacity-75"> Home </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> Company Review </a>
+                                    <a href="#" className="text-white transition hover:opacity-75"> About Us </a>
                                 </li>
 
                                 <li>
@@ -139,7 +139,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="font-medium text-white">Company</p>
+                            <p className="font-medium text-white text-lg">Company</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
@@ -157,7 +157,7 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="font-medium text-white">Helpful Links</p>
+                            <p className="font-medium text-white text-lg">Helpful Links</p>
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
@@ -175,33 +175,33 @@ const Footer = () => {
                         </div>
 
                         <div>
-                            <p className="font-medium text-white">Contact</p>
+                            <p className="font-medium text-white text-lg">Contact</p>
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> Skype: kajalkhan628 </a>
+                                    <a href="#" className="text-white transition hover:opacity-75"> Linkdin: Shimul_Zahan </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> Facebook: kajal.khan.628 </a>
+                                    <a href="#" className="text-white transition hover:opacity-75"> Facebook: Shimul_Zahan </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> Telegram: kajalkhan628 </a>
+                                    <a href="#" className="text-white transition hover:opacity-75"> Tel: Shimul_Zahan636 </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> Email: kajalkhan628v@gmail.com </a>
+                                    <a href="#" className="text-white transition hover:opacity-75">shimulzahan636@gmail.com </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-white transition hover:opacity-75"> Whats App: +8801773940036 </a>
+                                    <a href="#" className="text-white transition hover:opacity-75"> Wsp: +8801714760739 </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <p className="text-xs text-gray-500">&copy; 2022. FreshCart . All rights reserved.</p>
+                <p className="text-xs text-gray-500">&copy; 2022. GOFIRM (Shimul Zahan) . All rights reserved.</p>
             </div>
         </footer>
     )

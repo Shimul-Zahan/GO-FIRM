@@ -4,8 +4,12 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import SearchNav from './SearchNav';
 import { Link } from 'react-router-dom'
 import './style.css'
+import { useContext } from 'react';
+import { MyContext } from '../../Auth/AuthProvide';
 
 const Navbar = () => {
+
+  const { login_user } = useContext(MyContext)
 
   const menus = [
     {
@@ -54,7 +58,7 @@ const Navbar = () => {
       menu: 'Blogs',
       link: '/blog',
     },
-    {
+    login_user?.role === 'admin' && {
       menu: 'Dashboard',
       link: '/dashboard',
     },

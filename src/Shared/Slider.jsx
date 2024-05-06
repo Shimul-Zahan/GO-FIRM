@@ -30,7 +30,21 @@ export default function Slider() {
 
         fetchData();
     }, []);
-    console.log(cats);
+
+    const [productCounts, setProductCounts] = useState([]);
+
+    useEffect(() => {
+        const fetchProductCounts = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/cat-count');
+                setProductCounts(response.data);
+            } catch (error) {
+                console.error('Error fetching product counts by category:', error);
+            }
+        };
+
+        fetchProductCounts();
+    }, []);
 
     return (
         <div className='lg:max-w-6xl mx-auto py-10'>
@@ -65,7 +79,7 @@ export default function Slider() {
                                 <img src={`http://localhost:5000/image/${cat.image}`} alt='slider2' />
                                 <div className='absolute top-10 w-[190px] left-0'>
                                     <h1 className='text-xl'>{cat?.name}</h1>
-                                    <p className='text-base'>5 Items</p>
+                                    <p className='text-base'>{getCountByCategory(cat?.name)}</p>
                                 </div>
                             </li>
                         </SwiperSlide>
@@ -74,4 +88,12 @@ export default function Slider() {
             </Swiper>
         </div>
     );
+
+    // shot total count here
+
+    function getCountByCategory(name) {
+        const categoryCount = productCounts.find(item => item.name === name);
+        return categoryCount ? `${categoryCount.count} Items` : '0 Items';
+    }
+
 }

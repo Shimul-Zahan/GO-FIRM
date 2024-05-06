@@ -19,6 +19,21 @@ const AllCat = () => {
         fetchData();
     }, []);
 
+    const [productCounts, setProductCounts] = useState([]);
+
+    useEffect(() => {
+        const fetchProductCounts = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/cat-count');
+                setProductCounts(response.data);
+            } catch (error) {
+                console.error('Error fetching product counts by category:', error);
+            }
+        };
+
+        fetchProductCounts();
+    }, []);
+
     return (
         <div>
             <div className="relative p-10">
@@ -38,6 +53,7 @@ const AllCat = () => {
                                     <div>
                                         <h1 className='text-2xl font-bold'>{cat.name}</h1>
                                         <h1 className='text-lg'>{cat.subName}</h1>
+                                        <h1 className='text-lg font-bold'>{getCountByCategory(cat?.name)}</h1>
                                     </div>
                                     <img src={`http://localhost:5000/image/${cat.image}`} className='h-32' alt="" />
                                 </div>
@@ -48,6 +64,14 @@ const AllCat = () => {
             </div>
         </div>
     )
+
+    // shot total count here
+
+    function getCountByCategory(name) {
+        const categoryCount = productCounts.find(item => item.name === name);
+        return categoryCount ? `${categoryCount.count} Items` : '0 Items';
+    }
+
 }
 
 export default AllCat

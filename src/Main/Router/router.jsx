@@ -25,6 +25,8 @@ import AddProducts from '../../Dashboard/Pages/AddProducts'
 import Blogs from '../../components/Blogs/Blogs'
 import AllCat from '../../Dashboard/Pages/AllCat'
 import AddCat from '../../Dashboard/Pages/AddCat'
+import Private from '../../Auth/PrivateRoute'
+import DasPrivate from '../../Auth/DashPrivate'
 
 
 const router = createBrowserRouter([
@@ -75,7 +77,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <CartItem />,
+                element: <Private><CartItem /></Private>,
             },
             {
                 path: '/coupons',
@@ -87,15 +89,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/checkout',
-                element: <BillingDetails />,
+                element: <Private><BillingDetails /></Private>,
             },
             {
                 path: '/order',
-                element: <TrackOrder />,
+                element: <Private><TrackOrder /></Private>,
             },
             {
                 path: '/wishlist',
-                element: <Whitelist />,
+                element: <Private><Whitelist /></Private>,
             },
             {
                 path: '/compare',
@@ -113,27 +115,27 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard />
+                element: <DasPrivate><Dashboard /></DasPrivate>
             },
             {
                 path: '/dashboard/admin-profile',
-                element: <Profile />
+                element: <DasPrivate><Profile /></DasPrivate>
             },
             {
                 path: '/dashboard/all-products',
-                element: <AllProducts />
+                element: <DasPrivate><AllProducts /></DasPrivate>
             },
             {
                 path: '/dashboard/all-cat',
-                element: <AllCat />
+                element: <DasPrivate><AllCat /></DasPrivate>
             },
             {
                 path: '/dashboard/add-cat',
-                element: <AddCat />
+                element: <DasPrivate><AddCat /></DasPrivate>
             },
             {
                 path: '/dashboard/add-products',
-                element: <AddProducts />
+                element: <DasPrivate><AddProducts /></DasPrivate>
             },
         ]
     }
