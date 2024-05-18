@@ -12,7 +12,7 @@ const AllProducts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/get-all-products');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/get-all-products');
                 setProds(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);

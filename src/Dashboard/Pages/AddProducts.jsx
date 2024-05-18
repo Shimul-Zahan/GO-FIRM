@@ -33,7 +33,7 @@ const AddProducts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/get-all-cat');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/get-all-cat');
                 setCat(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -60,7 +60,7 @@ const AddProducts = () => {
             isTopSelling
         };
         try {
-            const res = await axios.post('http://localhost:5000/api/add-product', product,
+            const res = await axios.post('https://server-brown-tau.vercel.app/api/add-product', product,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',

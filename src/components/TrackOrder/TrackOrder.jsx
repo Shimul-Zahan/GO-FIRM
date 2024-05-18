@@ -11,7 +11,7 @@ const TrackOrder = () => {
 
     const getLatestPayment = async (email) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/get-latest-payment?email=${email}`);
+            const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-latest-payment?email=${email}`);
             return response.data;
         } catch (error) {
             console.error('Error fetching latest payment data:', error);

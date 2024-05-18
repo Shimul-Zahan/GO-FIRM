@@ -15,7 +15,7 @@ const Compare = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/get-to-compare?email=${login_user?.email}`);
+                const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-to-compare?email=${login_user?.email}`);
                 setCat(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -38,11 +38,11 @@ const Compare = () => {
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-t border-b border-gray-400 py-5'>
-                            <img src={`http://localhost:5000/image/${cats[0]?.image}`} alt="" />
+                            <img src={`https://server-brown-tau.vercel.app/image/${cats[0]?.image}`} alt="" />
                             <h1 className='text-xl font-bold'>{cats[0]?.productName}</h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border border-gray-400 py-5'>
-                            <img src={`http://localhost:5000/image/${cats[1]?.image}`} alt="" />
+                            <img src={`https://server-brown-tau.vercel.app/image/${cats[1]?.image}`} alt="" />
                             <h1 className='text-xl font-bold'>{cats[1]?.productName}</h1>
                         </div>
                     </div>

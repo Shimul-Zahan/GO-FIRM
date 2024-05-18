@@ -16,7 +16,7 @@ const SearchNav = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+                const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-cart?email=${login_user?.email}`);
                 setProds(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -30,7 +30,7 @@ const SearchNav = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/get-white?email=${login_user?.email}`);
+                const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-white?email=${login_user?.email}`);
                 setWhite(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -59,7 +59,7 @@ const SearchNav = () => {
                 <div className="flex justify-center items-center gap-2">
                     <div className="bg-[#7d9e77] text-2xl p-1 rounded-full text-white">
                         {login_user && login_user.role !== 'google' ? (
-                            <img src={`http://localhost:5000/image/${login_user.image}`} className="h-8 w-8 rounded-full" alt="" />
+                            <img src={`https://server-brown-tau.vercel.app/image/${login_user.image}`} className="h-8 w-8 rounded-full" alt="" />
                         ) : login_user?.role === 'google' ? (
                             <img src={login_user.image} className="h-8 w-8 rounded-full" alt="" />
                         ) : (

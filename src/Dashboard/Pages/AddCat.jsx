@@ -23,7 +23,7 @@ const AddCat = () => {
         e.preventDefault();
         const cat = { name, subName, details, image: showName }
         try {
-            const res = await axios.post('http://localhost:5000/api/add-category', cat,
+            const res = await axios.post('https://server-brown-tau.vercel.app/api/add-category', cat,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',

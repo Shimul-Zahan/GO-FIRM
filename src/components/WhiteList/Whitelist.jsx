@@ -13,7 +13,7 @@ const Whitelist = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/get-white?email=${login_user?.email}`);
+                const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-white?email=${login_user?.email}`);
                 setWhite(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -27,7 +27,7 @@ const Whitelist = () => {
     const handleDelete = async (itemId) => {
         setState(false)
         try {
-            await axios.delete(`http://localhost:5000/api/whitelist/${itemId}`);
+            await axios.delete(`https://server-brown-tau.vercel.app/api/whitelist/${itemId}`);
             setState(true)
             setWhite(white.filter(item => item._id !== itemId));
         } catch (error) {
@@ -60,7 +60,7 @@ const Whitelist = () => {
                                     <div className='grid grid-cols-4 justify-center items-center'>
                                         <h1 className='col-span-3'>
                                             <div className='flex justify-start gap-2 items-center'>
-                                                <img src={`http://localhost:5000/image/${w.image}`} alt="" className='h-24' />
+                                                <img src={`https://server-brown-tau.vercel.app/image/${w.image}`} alt="" className='h-24' />
                                                 <h1>{w.productName}</h1>
                                             </div>
                                         </h1>

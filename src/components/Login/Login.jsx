@@ -19,7 +19,7 @@ const Login = () => {
         e.preventDefault();
         const user = { email, password }
         try {
-            const res = await axios.post('http://localhost:5000/api/login', user);
+            const res = await axios.post('https://server-brown-tau.vercel.app/api/login', user);
             if (res?.data?.email) {
                 navigate('/');
                 localStorage.setItem("GOFIRM-LOGIN", JSON.stringify(res?.data));
@@ -40,7 +40,7 @@ const Login = () => {
                     role: 'google',
                 };
                 console.log(userInfo);
-                axios.post('http://localhost:5000/api/googleLogin', userInfo)
+                axios.post('https://server-brown-tau.vercel.app/api/googleLogin', userInfo)
                     .then(response => {
                         if (response?.data?.email) {
                             navigate('/');

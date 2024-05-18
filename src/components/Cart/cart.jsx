@@ -16,7 +16,7 @@ const CartItem = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+                const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-cart?email=${login_user?.email}`);
                 setProds(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -41,8 +41,8 @@ const CartItem = () => {
 
     const handleDeleteItem = async (productId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/delete-cart-item/${productId}`);
-            const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+            await axios.delete(`https://server-brown-tau.vercel.app/api/delete-cart-item/${productId}`);
+            const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-cart?email=${login_user?.email}`);
             setProds(response.data);
         } catch (error) {
             console.error('Error deleting item from cart:', error);
@@ -68,7 +68,7 @@ const CartItem = () => {
                             <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
                                 <div className='col-span-5'>
                                     <div className='flex justify-start gap-2 items-center'>
-                                        <img src={`http://localhost:5000/image/${p.image}`} alt="" className='h-24' />
+                                        <img src={`https://server-brown-tau.vercel.app/image/${p.image}`} alt="" className='h-24' />
                                         <h1>{p.productName}</h1>
                                     </div>
                                 </div>

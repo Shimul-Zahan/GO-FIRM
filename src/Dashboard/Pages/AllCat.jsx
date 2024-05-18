@@ -9,7 +9,7 @@ const AllCat = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/get-all-cat');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/get-all-cat');
                 setCat(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -24,7 +24,7 @@ const AllCat = () => {
     useEffect(() => {
         const fetchProductCounts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/cat-count');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/cat-count');
                 setProductCounts(response.data);
             } catch (error) {
                 console.error('Error fetching product counts by category:', error);
@@ -55,7 +55,7 @@ const AllCat = () => {
                                         <h1 className='text-lg'>{cat.subName}</h1>
                                         <h1 className='text-lg font-bold'>{getCountByCategory(cat?.name)}</h1>
                                     </div>
-                                    <img src={`http://localhost:5000/image/${cat.image}`} className='h-32' alt="" />
+                                    <img src={`https://server-brown-tau.vercel.app/image/${cat.image}`} className='h-32' alt="" />
                                 </div>
                             )
                         }

@@ -21,7 +21,7 @@ export default function Slider() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/get-all-cat');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/get-all-cat');
                 setCat(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -36,7 +36,7 @@ export default function Slider() {
     useEffect(() => {
         const fetchProductCounts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/cat-count');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/cat-count');
                 setProductCounts(response.data);
             } catch (error) {
                 console.error('Error fetching product counts by category:', error);
@@ -76,7 +76,7 @@ export default function Slider() {
                     cats && cats.map(cat =>
                         <SwiperSlide>
                             <li className='relative text-center'>
-                                <img src={`http://localhost:5000/image/${cat.image}`} alt='slider2' />
+                                <img src={`https://server-brown-tau.vercel.app/image/${cat.image}`} alt='slider2' />
                                 <div className='absolute top-10 w-[190px] left-0'>
                                     <h1 className='text-xl'>{cat?.name}</h1>
                                     <p className='text-base'>{getCountByCategory(cat?.name)}</p>

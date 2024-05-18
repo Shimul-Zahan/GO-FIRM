@@ -29,7 +29,7 @@ const ShopPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/get-all-products');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/get-all-products');
                 setProds(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -45,7 +45,7 @@ const ShopPage = () => {
         const { email } = login_user;
         const productWithUserEmail = { ...selectedProduct, email };
         try {
-            const response = await axios.post('http://localhost:5000/api/add-to-cart', productWithUserEmail);
+            const response = await axios.post('https://server-brown-tau.vercel.app/api/add-to-cart', productWithUserEmail);
             console.log(response.data);
             toast.success(`${response?.data?.message}`);
         } catch (error) {
@@ -59,7 +59,7 @@ const ShopPage = () => {
         const productWithUserEmail = { ...selectedProduct, email };
         console.log(productWithUserEmail);
         try {
-            const response = await axios.post('http://localhost:5000/api/add-to-whislist', productWithUserEmail);
+            const response = await axios.post('https://server-brown-tau.vercel.app/api/add-to-whislist', productWithUserEmail);
             console.log(response.data);
             toast.success(`${response?.data?.message}`);
         } catch (error) {
@@ -73,7 +73,7 @@ const ShopPage = () => {
         const productWithUserEmail = { ...selectedProduct, email };
         console.log(productWithUserEmail);
         try {
-            const response = await axios.post('http://localhost:5000/api/add-to-compare', productWithUserEmail);
+            const response = await axios.post('https://server-brown-tau.vercel.app/api/add-to-compare', productWithUserEmail);
             console.log(response.data);
             toast.success(`${response?.data?.message}`);
         } catch (error) {
@@ -84,7 +84,7 @@ const ShopPage = () => {
     // searxh here
     const handleInputChange = async (e) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/search?search=${e.target.value}`);
+            const response = await axios.get(`https://server-brown-tau.vercel.app/api/search?search=${e.target.value}`);
             setProds(response.data);
             // setSearchResults(response.data);
         } catch (error) {
@@ -258,7 +258,7 @@ const ShopPage = () => {
                                 {prods && prods.map(product =>
                                     <div className="group relative items-center justify-center overflow-hidden cursor-pointer">
                                         <div className="h-96 w-72">
-                                            <img src={`http://localhost:5000/image/${product.image}`} alt="" />
+                                            <img src={`https://server-brown-tau.vercel.app/image/${product.image}`} alt="" />
                                         </div>
                                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
                                         <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
@@ -314,7 +314,7 @@ const ShopPage = () => {
                                     </button>
                                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 mb-10">
                                         <div className="">
-                                            <img src={`http://localhost:5000/image/${selectedProduct.image}`} className="h-[600px] w-[600px]" alt="" />
+                                            <img src={`https://server-brown-tau.vercel.app/image/${selectedProduct.image}`} className="h-[600px] w-[600px]" alt="" />
                                         </div>
                                         <div className="space-y-5 lg:px-10">
                                             <h1 className='text-sm'>{selectedProduct?.selectedCat}</h1>

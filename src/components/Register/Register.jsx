@@ -39,7 +39,7 @@ const SignUP = () => {
                     role: 'google',
                 };
                 console.log(userInfo);
-                axios.post('http://localhost:5000/api/googleLogin', userInfo)
+                axios.post('https://server-brown-tau.vercel.app/api/googleLogin', userInfo)
                     .then(response => {
                         if (response?.data?.email) {
                             navigate('/')
@@ -61,14 +61,14 @@ const SignUP = () => {
         }
 
         try {
-            const res = await axios.post('http://localhost:5000/api/registration', user,
+            const res = await axios.post('https://server-brown-tau.vercel.app/api/registration', user,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 }
             );
-            if(res.data?.message === 'successfully created'){
+            if (res.data?.message === 'successfully created') {
                 navigate('/login')
             }
         } catch (error) {

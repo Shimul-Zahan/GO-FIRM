@@ -34,7 +34,7 @@ const BillingDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/get-cart?email=${login_user?.email}`);
+                const response = await axios.get(`https://server-brown-tau.vercel.app/api/get-cart?email=${login_user?.email}`);
                 setProds(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -86,7 +86,7 @@ const BillingDetails = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/submit-billing', formData);
+            const response = await axios.post('https://server-brown-tau.vercel.app/api/submit-billing', formData);
             setUserInfo(formData)
             console.log(response.data);
             toast.success('register successfully');
@@ -106,7 +106,7 @@ const BillingDetails = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/checkout', data);
+            const response = await axios.post('https://server-brown-tau.vercel.app/api/checkout', data);
             toast.success('register successfully');
             window.location.replace(response.data?.url);
         } catch (error) {

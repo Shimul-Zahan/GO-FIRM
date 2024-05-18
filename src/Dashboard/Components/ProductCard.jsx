@@ -63,7 +63,7 @@ const MediaControlCard = ({ image, name, cat, price, status, product, setIsDelet
         console.log(updatedProduct);
 
         try {
-            const res = await axios.put(`http://localhost:5000/api/update-product/${product._id}`, updatedProduct);
+            const res = await axios.put(`https://server-brown-tau.vercel.app/api/update-product/${product._id}`, updatedProduct);
             console.log(res.data);
             if (res.data) {
                 closeModal()
@@ -78,7 +78,7 @@ const MediaControlCard = ({ image, name, cat, price, status, product, setIsDelet
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/get-all-cat');
+                const response = await axios.get('https://server-brown-tau.vercel.app/api/get-all-cat');
                 setCat(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -91,7 +91,7 @@ const MediaControlCard = ({ image, name, cat, price, status, product, setIsDelet
     const handleDelete = async () => {
         setIsDeleting(true);
         try {
-            const res = await axios.delete(`http://localhost:5000/api/delete-product/${product._id}`);
+            const res = await axios.delete(`https://server-brown-tau.vercel.app/api/delete-product/${product._id}`);
             if (res.data) {
                 toast.success('Product deleted successfully!!!');
             }
@@ -108,7 +108,7 @@ const MediaControlCard = ({ image, name, cat, price, status, product, setIsDelet
     return (
         <div className="flex bg-white shadow-md rounded-lg h-32">
             <img
-                src={`http://localhost:5000/image/${image}`}
+                src={`https://server-brown-tau.vercel.app/image/${image}`}
                 className="w-32 h-32 object-cover rounded-tl-lg rounded-bl-lg"
             />
             <div className="flex flex-col w-full">
