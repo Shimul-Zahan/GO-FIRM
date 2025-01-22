@@ -38,11 +38,11 @@ const Compare = () => {
                     </div>
                     <div class="grid grid-cols-2">
                         <div className='flex justify-center items-center flex-col space-y-2 border-t border-b border-gray-400 py-5'>
-                            <img src={`http://localhost:5000/image/${cats[0]?.image}`} alt="" />
+                            <img src={`https://gofirm-server.vercel.app/api/image/${cats[0]?.image}`} alt="" />
                             <h1 className='text-xl font-bold'>{cats[0]?.productName}</h1>
                         </div>
                         <div className='flex justify-center items-center flex-col space-y-2 border border-gray-400 py-5'>
-                            <img src={`http://localhost:5000/image/${cats[1]?.image}`} alt="" />
+                            <img src={`https://gofirm-server.vercel.app/api/image/${cats[1]?.image}`} alt="" />
                             <h1 className='text-xl font-bold'>{cats[1]?.productName}</h1>
                         </div>
                     </div>

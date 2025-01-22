@@ -258,7 +258,7 @@ const ShopPage = () => {
                                 {prods && prods.map(product =>
                                     <div className="group relative items-center justify-center overflow-hidden cursor-pointer">
                                         <div className="h-96 w-72">
-                                            <img src={`http://localhost:5000/image/${product.image}`} alt="" />
+                                            <img src={`https://gofirm-server.vercel.app/api/image/${product.image}`} alt="" />
                                         </div>
                                         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent"></div>
                                         <div className='text-4xl ml-5 w-full space-y-2 absolute top-[35%] left-2 translate-y-[-50%]  group-hover:block transition-transform delay-300 transform hidden hover:block '>
@@ -314,7 +314,7 @@ const ShopPage = () => {
                                     </button>
                                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 mb-10">
                                         <div className="">
-                                            <img src={`http://localhost:5000/image/${selectedProduct.image}`} className="h-[600px] w-[600px]" alt="" />
+                                            <img src={`https://gofirm-server.vercel.app/api/image/${selectedProduct.image}`} className="h-[600px] w-[600px]" alt="" />
                                         </div>
                                         <div className="space-y-5 lg:px-10">
                                             <h1 className='text-sm'>{selectedProduct?.selectedCat}</h1>

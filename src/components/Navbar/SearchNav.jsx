@@ -59,7 +59,7 @@ const SearchNav = () => {
                 <div className="flex justify-center items-center gap-2">
                     <div className="bg-[#7d9e77] text-2xl p-1 rounded-full text-white">
                         {login_user && login_user.role !== 'google' ? (
-                            <img src={`http://localhost:5000/image/${login_user.image}`} className="h-8 w-8 rounded-full" alt="" />
+                            <img src={`https://gofirm-server.vercel.app/api/image/${login_user.image}`} className="h-8 w-8 rounded-full" alt="" />
                         ) : login_user?.role === 'google' ? (
                             <img src={login_user.image} className="h-8 w-8 rounded-full" alt="" />
                         ) : (

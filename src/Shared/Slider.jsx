@@ -76,7 +76,7 @@ export default function Slider() {
                     cats && cats.map(cat =>
                         <SwiperSlide>
                             <li className='relative text-center'>
-                                <img src={`http://localhost:5000/image/${cat.image}`} alt='slider2' />
+                                <img src={`https://gofirm-server.vercel.app/api/image/${cat.image}`} alt='slider2' />
                                 <div className='absolute top-10 w-[190px] left-0'>
                                     <h1 className='text-xl'>{cat?.name}</h1>
                                     <p className='text-base'>{getCountByCategory(cat?.name)}</p>

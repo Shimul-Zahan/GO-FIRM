@@ -68,7 +68,7 @@ const CartItem = () => {
                             <div className='grid lg:grid-cols-10 py-2 px-2 justify-center items-center'>
                                 <div className='col-span-5'>
                                     <div className='flex justify-start gap-2 items-center'>
-                                        <img src={`http://localhost:5000/image/${p.image}`} alt="" className='h-24' />
+                                        <img src={`https://gofirm-server.vercel.app/api/image/${p.image}`} alt="" className='h-24' />
                                         <h1>{p.productName}</h1>
                                     </div>
                                 </div>
