@@ -34,7 +34,7 @@ const ProductDetails = () => {
             <div className='max-w-7xl mx-auto py-10'>
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 mb-10">
                     <div className="">
-                        <img src={`https://server-brown-tau.vercel.app/image/${product?.image}`} className="object-cover rounded-tl-lg rounded-bl-lg" />
+                        <img src={`http://localhost:5000/image/${product?.image}`} className="object-cover rounded-tl-lg rounded-bl-lg" />
                     </div>
                     <div className="space-y-5 lg:px-10">
                         <h1 className='text-sm'>{product?.selectedCat}</h1>
