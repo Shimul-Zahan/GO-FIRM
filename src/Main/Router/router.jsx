@@ -31,6 +31,7 @@ import AdminOrderTable from '../../Version.2.0.0/AdminDashboardPages/Pages/Payme
 import PendingOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/PendingOrders'
 import CancelOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/CancelOrders'
 import AllPaymentTable from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/AllPayments'
+import AddCouponComponent from '../../Version.2.0.0/AdminDashboardPages/Pages/StoreRoom/AddVoucher'
 
 
 const router = createBrowserRouter([
@@ -146,9 +147,14 @@ const router = createBrowserRouter([
                 path: '/dashboard/add-discount',
                 element: <DasPrivate><AddProducts /></DasPrivate>
             },
+            // {
+            //     path: '/dashboard/add-voucher',
+            //     element: <DasPrivate><AddProducts /></DasPrivate>
+            // },
+            // voucher and discount
             {
                 path: '/dashboard/add-voucher',
-                element: <DasPrivate><AddProducts /></DasPrivate>
+                element: <DasPrivate><AddCouponComponent /></DasPrivate>
             },
             // for orders and payments route
             {
