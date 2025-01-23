@@ -27,6 +27,10 @@ import AllCat from '../../Dashboard/Pages/AllCat'
 import AddCat from '../../Dashboard/Pages/AddCat'
 import Private from '../../Auth/PrivateRoute'
 import DasPrivate from '../../Auth/DashPrivate'
+import AdminOrderTable from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/AllOrders'
+import PendingOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/PendingOrders'
+import CancelOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/CancelOrders'
+import AllPaymentTable from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/AllPayments'
 
 
 const router = createBrowserRouter([
@@ -113,6 +117,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <Sidebard />,
         children: [
+            // heres all the store route
             {
                 path: '/dashboard',
                 element: <DasPrivate><Dashboard /></DasPrivate>
@@ -137,6 +142,32 @@ const router = createBrowserRouter([
                 path: '/dashboard/add-products',
                 element: <DasPrivate><AddProducts /></DasPrivate>
             },
+            {
+                path: '/dashboard/add-discount',
+                element: <DasPrivate><AddProducts /></DasPrivate>
+            },
+            {
+                path: '/dashboard/add-voucher',
+                element: <DasPrivate><AddProducts /></DasPrivate>
+            },
+            // for orders and payments route
+            {
+                path: '/dashboard/all-orders',
+                element: <DasPrivate><AdminOrderTable /></DasPrivate>
+            },
+            {
+                path: '/dashboard/pending-orders',
+                element: <DasPrivate><PendingOrders /></DasPrivate>
+            },
+            {
+                path: '/dashboard/cancel-orders',
+                element: <DasPrivate><CancelOrders /></DasPrivate>
+            },
+            {
+                path: '/dashboard/all-payments',
+                element: <DasPrivate><AllPaymentTable /></DasPrivate>
+            },
+
         ]
     }
 ])
