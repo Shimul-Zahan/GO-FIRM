@@ -199,6 +199,15 @@ const Sidebard = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
+                            <NavLink to='/dashboard/mails' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                                <div className='flex justify-start items-center gap-3'>
+                                    <FaUsers className='text-base' />
+                                    <h1 className='text-base'>Add Workflow</h1>
+                                </div>
+                                <div className='pr- text-[#21295c]'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
+                                </div>
+                            </NavLink>
                         </ul>
                     </div>
 
