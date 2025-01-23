@@ -36,7 +36,7 @@ const Navbar = () => {
         { menu: 'Login', link: '/login' },
         { menu: 'Register', link: '/reg' },
         { menu: 'Forgot', link: '/reset-pass' },
-        { menu: 'Profile', link: '/profile' },
+        { menu: 'Profile', link: '/user/dashboard' },
         { menu: 'Invoice', link: '/invoice' },
         { menu: 'Order', link: '/order' },
         { menu: 'Checkout', link: '/checkout' }

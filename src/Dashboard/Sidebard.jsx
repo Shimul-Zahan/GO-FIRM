@@ -82,7 +82,16 @@ const Sidebard = () => {
                             <NavLink to='/dashboard/geography' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <BiWorld className='text-base' />
-                                    <h1 className='text-base'>Others</h1>
+                                    <h1 className='text-base'>Add Discount</h1>
+                                </div>
+                                <div className='pr- text-[#21295c]'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
+                                </div>
+                            </NavLink>
+                            <NavLink to='/dashboard/add-voucher' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                                <div className='flex justify-start items-center gap-3'>
+                                    <BiWorld className='text-base' />
+                                    <h1 className='text-base'>Add Voucher</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
@@ -93,48 +102,84 @@ const Sidebard = () => {
 
                     {/* navlinks */}
                     <div className='mt-6'>
-                        <h1 className="px-12 mt-5 text-base text-[#b9a683] mb-5 uppercase">Payment Maintain</h1>
+                        <h1 className="px-12 mt-5 text-base text-[#b9a683] mb-5 uppercase">Payment & Orders</h1>
                         <ul className="space-y-1 px-5">
-                            <NavLink to='/dashboard/overview' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/all-orders' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <AiFillHourglass className='text-base' />
-                                    <h1 className='text-base'>Overview</h1>
+                                    <h1 className='text-base'>All Orders</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
-                            <NavLink to='/dashboard/daily' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/pending-orders' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <FaRegCalendar className='text-base' />
-                                    <h1 className='text-base'>Daily</h1>
+                                    <h1 className='text-base'>Pending Orders</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
-                            <NavLink to='/dashboard/monthly' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/cancel-orders' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <FaCalendarAlt className='text-base' />
-                                    <h1 className='text-base'>Monthly</h1>
+                                    <h1 className='text-base'>Cancel Orders</h1>
                                 </div>
                                 <div className=' text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
-                            <NavLink to='/dashboard/breakdown' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/all-payments' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
                                     <MdHomeFilled className='text-base' />
-                                    <h1 className='text-base'>Breakdown</h1>
+                                    <h1 className='text-base'>All Payments</h1>
                                 </div>
                                 <div className='text-[#21295c] text-lg'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
+                            {/* <NavLink to='/dashboard/breakdown' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                                <div className='flex justify-start items-center gap-3'>
+                                    <MdHomeFilled className='text-base' />
+                                    <h1 className='text-base'>Block Payments</h1>
+                                </div>
+                                <div className='text-[#21295c] text-lg'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
+                                </div>
+                            </NavLink> */}
                         </ul>
                     </div>
+
+                    {/* navlinks for contact */}
                     <div className='mt-6'>
-                        <h1 className="px-12 mt-5 text-xl text-[#b9a683] mb-5">Management Home</h1>
+                        <h1 className="px-12 mt-5 text-xl text-[#b9a683] mb-5">Message Setting</h1>
+                        <ul className="space-y-1 px-5">
+                            <NavLink to='/dashboard/helpline' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                                <div className='flex justify-start items-center gap-3'>
+                                    <FaUsers className='text-base' />
+                                    <h1 className='text-base'>Helpline Message</h1>
+                                </div>
+                                <div className='pr- text-[#21295c]'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
+                                </div>
+                            </NavLink>
+                            <NavLink to='/dashboard/admin-message' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                                <div className='flex justify-start items-center gap-3'>
+                                    <MdAdminPanelSettings className='text-base' />
+                                    <h1 className='text-base'>Admin Message</h1>
+                                </div>
+                                <div className='pr- text-[#21295c]'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
+                                </div>
+                            </NavLink>
+                        </ul>
+                    </div>
+
+                    {/* Navlinks for admin */}
+                    <div className='mt-6'>
+                        <h1 className="px-12 mt-5 text-xl text-[#b9a683] mb-5">Only For Super Admin</h1>
                         <ul className="space-y-1 px-5">
                             <NavLink to='/dashboard/admin-profile' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
@@ -145,36 +190,18 @@ const Sidebard = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
-                            <NavLink to='/dashboard/admin' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
+                            <NavLink to='/dashboard/mails' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
                                 <div className='flex justify-start items-center gap-3'>
-                                    <MdAdminPanelSettings className='text-base' />
-                                    <h1 className='text-base'>Admin</h1>
+                                    <FaUsers className='text-base' />
+                                    <h1 className='text-base'>All Mails</h1>
                                 </div>
                                 <div className='pr- text-[#21295c]'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
                                 </div>
                             </NavLink>
-                            <NavLink to='/dashboard/performance' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
-                                <div className='flex justify-start items-center gap-3'>
-                                    <GrDocumentPerformance className='text-base' />
-                                    <h1 className='text-base'>Performance</h1>
-                                </div>
-                                <div className='pr- text-[#21295c]'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
-                                </div>
-                            </NavLink>
-                            <NavLink to='/dashboard/performance' className='flex justify-between items-center text-[#ddd5c7] hover:bg-[#b9a683] hover:text-black px-5 py-2'>
-                                <div className='flex justify-start items-center gap-3'>
-                                    <GrDocumentPerformance className='text-base' />
-                                    <h1 className='text-base'>Message</h1>
-                                </div>
-                                <div className='pr- text-[#21295c]'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="24px" viewBox="0 0 28 32"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m10 17l5-5-5-5" /></svg>
-                                </div>
-                            </NavLink>
-
                         </ul>
                     </div>
+
                 </div>
                 <div className="sticky inset-x-0 bottom-0 z-50 flex justify-between bg-[#21295c] items-center pr-4 border-t border-gray-100 text-[#b9a683] ">
                     <a href="#" className="flex items-center gap-2 p-4">

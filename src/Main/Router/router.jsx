@@ -6,14 +6,12 @@ import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
 import Error from '../../Pages/Error'
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
-import HomeProfile from '../../components/Profile/Home/Home'
 import ShopPage from '../../components/Products/Product/Product'
 import ShopCategory from '../../components/ShopCategory/ShopCategory'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
 import CartItem from '../../components/Cart/cart'
 import CouponCard from '../../components/Coupons/Coupons'
 import Contact from '../../components/Contact/Contact'
-import BillingDetails from '../../components/BillingDetails/BillingDetails'
 import TrackOrder from '../../components/TrackOrder/TrackOrder'
 import Whitelist from '../../components/WhiteList/Whitelist'
 import Compare from '../../components/Compare/Compare'
@@ -27,6 +25,14 @@ import AllCat from '../../Dashboard/Pages/AllCat'
 import AddCat from '../../Dashboard/Pages/AddCat'
 import Private from '../../Auth/PrivateRoute'
 import DasPrivate from '../../Auth/DashPrivate'
+import AdminOrderTable from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/AllOrders'
+import PendingOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/PendingOrders'
+import CancelOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/CancelOrders'
+import AllPaymentTable from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/AllPayments'
+import AddCouponComponent from '../../Version.2.0.0/AdminDashboardPages/Pages/StoreRoom/AddVoucher'
+import UserDashboardLayout from '../../components/Profile/Home/Home'
+import UserProfile from '../../Version.2.0.0/UserDashBoardPages/Profile'
+import BillingDetails from '../../Version.2.0.0/UserDashBoardPages/BillingDetails'
 
 
 const router = createBrowserRouter([
@@ -55,10 +61,10 @@ const router = createBrowserRouter([
                 path: '/reset-pass',
                 element: <ResetPassword />,
             },
-            {
-                path: '/profile',
-                element: <HomeProfile />,
-            },
+            // {
+            //     path: '/profile',
+            //     element: <HomeProfile />,
+            // },
             {
                 path: '/shop',
                 element: <ShopPage />,
@@ -113,6 +119,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <Sidebard />,
         children: [
+            // heres all the store route
             {
                 path: '/dashboard',
                 element: <DasPrivate><Dashboard /></DasPrivate>
@@ -136,6 +143,51 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/add-products',
                 element: <DasPrivate><AddProducts /></DasPrivate>
+            },
+            {
+                path: '/dashboard/add-discount',
+                element: <DasPrivate><AddProducts /></DasPrivate>
+            },
+            // {
+            //     path: '/dashboard/add-voucher',
+            //     element: <DasPrivate><AddProducts /></DasPrivate>
+            // },
+            // voucher and discount
+            {
+                path: '/dashboard/add-voucher',
+                element: <DasPrivate><AddCouponComponent /></DasPrivate>
+            },
+            // for orders and payments route
+            {
+                path: '/dashboard/all-orders',
+                element: <DasPrivate><AdminOrderTable /></DasPrivate>
+            },
+            {
+                path: '/dashboard/pending-orders',
+                element: <DasPrivate><PendingOrders /></DasPrivate>
+            },
+            {
+                path: '/dashboard/cancel-orders',
+                element: <DasPrivate><CancelOrders /></DasPrivate>
+            },
+            {
+                path: '/dashboard/all-payments',
+                element: <DasPrivate><AllPaymentTable /></DasPrivate>
+            },
+
+        ]
+    },
+    {
+        path: '/user/dashboard',
+        element: <UserDashboardLayout />,
+        children: [
+            {
+                path: '/user/dashboard',
+                element: <UserProfile />
+            },
+            {
+                path: '/user/dashboard/billing-details',
+                element: <BillingDetails />
             },
         ]
     }
