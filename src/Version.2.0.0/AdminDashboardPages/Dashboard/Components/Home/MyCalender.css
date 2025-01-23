@@ -1,0 +1,7 @@
+/* Custom styles to highlight today's date */
+.highlight-today {
+    background-color: #ffcccb; /* Light red background */
+    color: white; /* White text color */
+    border-radius: 50%; /* Make it circular */
+    font-weight: bold; /* Bold text */
+}
