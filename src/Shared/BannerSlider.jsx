@@ -70,7 +70,7 @@ const BannerSlider = () => {
     };
 
     return (
-        <li className="pb-10">
+        <div className="pb-10">
             <div className="w-full cursor-pointer ">
                 <CarouselProvider
                     visibleSlides={1}
@@ -137,7 +137,7 @@ const BannerSlider = () => {
                     </div>
                 </CarouselProvider>
             </div>
-        </li>
+        </div>
     );
 };
 

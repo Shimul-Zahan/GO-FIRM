@@ -60,7 +60,7 @@ const AddProducts = () => {
             isTopSelling
         };
         try {
-            const res = await axios.post('https://server-brown-tau.vercel.app/api/add-product', product,
+            const res = await axios.post('https://gofirm-server.vercel.app/api/add-product', product,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
