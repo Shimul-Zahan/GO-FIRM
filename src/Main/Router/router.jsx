@@ -32,6 +32,8 @@ import PendingOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/Payment
 import CancelOrders from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/CancelOrders'
 import AllPaymentTable from '../../Version.2.0.0/AdminDashboardPages/Pages/PaymentAndOrders/AllPayments'
 import AddCouponComponent from '../../Version.2.0.0/AdminDashboardPages/Pages/StoreRoom/AddVoucher'
+import UserDashboardLayout from '../../components/Profile/Home/Home'
+import UserProfile from '../../Version.2.0.0/UserDashBoardPages/Profile'
 
 
 const router = createBrowserRouter([
@@ -60,10 +62,10 @@ const router = createBrowserRouter([
                 path: '/reset-pass',
                 element: <ResetPassword />,
             },
-            {
-                path: '/profile',
-                element: <HomeProfile />,
-            },
+            // {
+            //     path: '/profile',
+            //     element: <HomeProfile />,
+            // },
             {
                 path: '/shop',
                 element: <ShopPage />,
@@ -174,6 +176,16 @@ const router = createBrowserRouter([
                 element: <DasPrivate><AllPaymentTable /></DasPrivate>
             },
 
+        ]
+    },
+    {
+        path: '/user/dashboard',
+        element: <UserDashboardLayout />,
+        children: [
+            {
+                path: '/user/dashboard',
+                element: <UserProfile />
+            }
         ]
     }
 ])
