@@ -108,7 +108,7 @@ const MediaControlCard = ({ image, name, cat, price, status, product, setIsDelet
     return (
         <div className="flex bg-white shadow-md rounded-lg h-32">
             <img
-                src={`https://server-brown-tau.vercel.app/image/${image}`}
+                src={`http://localhost:5000/image/${image}`}
                 className="w-32 h-32 object-cover rounded-tl-lg rounded-bl-lg"
             />
             <div className="flex flex-col w-full">

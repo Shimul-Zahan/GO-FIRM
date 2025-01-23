@@ -60,7 +60,7 @@ const Whitelist = () => {
                                     <div className='grid grid-cols-4 justify-center items-center'>
                                         <h1 className='col-span-3'>
                                             <div className='flex justify-start gap-2 items-center'>
-                                                <img src={`https://gofirm-server.vercel.app/api/image/${w.image}`} alt="" className='h-24' />
+                                                <img src={`http://localhost:5000/image/${w.image}`} alt="" className='h-24' />
                                                 <h1>{w.productName}</h1>
                                             </div>
                                         </h1>
