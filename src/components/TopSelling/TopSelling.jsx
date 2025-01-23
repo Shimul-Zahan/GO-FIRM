@@ -38,7 +38,7 @@ const TopSelling = () => {
                         prods && prods.slice(0, 3).map(p =>
                             <div className='my-6 group cursor-pointer border-2 border-black hover:border-green-700 hover:border-2 duration-200 p-2 flex rounded-lg justify-start items-center gap-10'>
                                 <div className='overflow-hidden'>
-                                    <img src={`https://gofirm-server.vercel.app/api/image/${p.image}`} alt="" className='h-32 w-32 group-hover:scale-110 duration-300' />
+                                    <img src={`http://localhost:5000/image/${p.image}`} alt="" className='h-32 w-32 group-hover:scale-110 duration-300' />
                                 </div>
                                 <div className=''>
                                     <h1 className='text-base hover:text-green-700'>{p.selectedCat}</h1>
@@ -56,7 +56,7 @@ const TopSelling = () => {
                         prods && prods.slice(4, 7).map(p =>
                             <div className='my-6 group cursor-pointer border-2 border-black hover:border-green-700 hover:border-2 duration-200 p-2 flex rounded-lg justify-start items-center gap-10'>
                                 <div className='overflow-hidden'>
-                                    <img src={`https://gofirm-server.vercel.app/api/image/${p.image}`} alt="" className='h-32 w-32 group-hover:scale-110 duration-300' />
+                                    <img src={`http://localhost:5000/image/${p.image}`} alt="" className='h-32 w-32 group-hover:scale-110 duration-300' />
                                 </div>
                                 <div className=''>
                                     <h1 className='text-base hover:text-green-700'>{p.selectedCat}</h1>
