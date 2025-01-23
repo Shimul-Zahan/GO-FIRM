@@ -6,14 +6,12 @@ import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
 import Error from '../../Pages/Error'
 import ResetPassword from '../../components/ResetPassword/ResetPassword'
-import HomeProfile from '../../components/Profile/Home/Home'
 import ShopPage from '../../components/Products/Product/Product'
 import ShopCategory from '../../components/ShopCategory/ShopCategory'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
 import CartItem from '../../components/Cart/cart'
 import CouponCard from '../../components/Coupons/Coupons'
 import Contact from '../../components/Contact/Contact'
-import BillingDetails from '../../components/BillingDetails/BillingDetails'
 import TrackOrder from '../../components/TrackOrder/TrackOrder'
 import Whitelist from '../../components/WhiteList/Whitelist'
 import Compare from '../../components/Compare/Compare'
@@ -34,6 +32,7 @@ import AllPaymentTable from '../../Version.2.0.0/AdminDashboardPages/Pages/Payme
 import AddCouponComponent from '../../Version.2.0.0/AdminDashboardPages/Pages/StoreRoom/AddVoucher'
 import UserDashboardLayout from '../../components/Profile/Home/Home'
 import UserProfile from '../../Version.2.0.0/UserDashBoardPages/Profile'
+import BillingDetails from '../../Version.2.0.0/UserDashBoardPages/BillingDetails'
 
 
 const router = createBrowserRouter([
@@ -185,7 +184,11 @@ const router = createBrowserRouter([
             {
                 path: '/user/dashboard',
                 element: <UserProfile />
-            }
+            },
+            {
+                path: '/user/dashboard/billing-details',
+                element: <BillingDetails />
+            },
         ]
     }
 ])
