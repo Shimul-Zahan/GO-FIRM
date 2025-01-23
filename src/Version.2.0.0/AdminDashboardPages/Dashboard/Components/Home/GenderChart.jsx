@@ -53,7 +53,7 @@ const GenderPieChart = () => {
     };
 
     return (
-        <div className="p-3">
+        <div className="p-3 w-full">
             <h2 className="text-lg font-semibold text-center">Gender Distribution</h2>
             <div style={chartContainerStyle}>
                 <Pie data={data} options={options} />

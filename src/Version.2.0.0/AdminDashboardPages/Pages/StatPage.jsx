@@ -6,6 +6,7 @@ import TimeSchedule from '../Dashboard/Components/Home/TimeSchedule';
 import GenderPieChart from '../Dashboard/Components/Home/GenderChart';
 import Profile from '../Dashboard/Components/Home/Profile';
 import MyApp from '../Dashboard/Components/Home/Calende';
+import SalesHeatmap from './DashboardHomeAndStatPage/SalesHeatmap';
 
 
 const StatPage = () => {
@@ -19,7 +20,7 @@ const StatPage = () => {
         <div className=''>
             {/* Scrollable Content Section */}
             <div className='flex-1 overflow-y-auto pt-4'>
-                <div className='grid grid-cols-6 px- py-3'>
+                <div className='grid grid-cols-6 py-3'>
                     {/* Main Content */}
                     <div className='col-span-4 space-y-4'>
                         <Stats />
@@ -29,20 +30,21 @@ const StatPage = () => {
                                 <h1 className='text-xl font-semibold'>Next Patient Details</h1>
                                 <Profile />
                             </div>
-                            <div className="rounded-lg bg-gray-200">
-                                <GenderPieChart />
-                            </div>
                         </div>
-                        
+
                     </div>
 
                     {/* Right Side Content */}
                     <div className='col-span-2 px-5 w-full space-y-5'>
-                        <MyApp />
                         {/* <TimeSchedule /> */}
+                        <div className="rounded-lg bg-gray-200">
+                            <GenderPieChart />
+                        </div>
+                        <MyApp />
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

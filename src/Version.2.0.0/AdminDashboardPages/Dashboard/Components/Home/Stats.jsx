@@ -6,6 +6,7 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
 import { MdLogout } from "react-icons/md";
 import { SiCoveralls } from "react-icons/si";
+import SalesHeatmap from "../../../Pages/DashboardHomeAndStatPage/SalesHeatmap";
 
 const Stats = () => {
     return (
@@ -52,6 +53,7 @@ const Stats = () => {
                         </div>
                     </div>
                 </dl>
+                <SalesHeatmap />
             </div>
         </div>
     )
